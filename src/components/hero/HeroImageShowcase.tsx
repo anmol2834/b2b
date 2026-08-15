@@ -263,17 +263,8 @@ export function HeroImageShowcase({
           );
         })}
 
-        {/* Top Telemetry Overlay */}
-        <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 bg-black/65 backdrop-blur-md text-[11px] font-tech text-white shadow-lg">
-            <span className="h-2 w-2 rounded-full bg-accent-primary animate-pulse" />
-            <span className="font-bold text-accent-primary uppercase tracking-wider">
-              {currentSlide.tag}
-            </span>
-            <span className="text-slate-400">•</span>
-            <span className="text-slate-200 truncate">{currentSlide.projectType}</span>
-          </div>
-
+        {/* Top Telemetry Overlay (Slide Counter) */}
+        <div className="absolute top-4 right-4 z-20 flex items-center justify-end pointer-events-none">
           <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-white/15 bg-black/50 backdrop-blur-md text-[10px] font-tech text-slate-300">
             <span>{String(safeIndex + 1).padStart(2, '0')}</span>
             <span className="text-slate-500">/</span>
