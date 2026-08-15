@@ -7,7 +7,6 @@ import {
   Send, 
   Menu, 
   Clock, 
-  PhoneCall, 
   Hexagon
 } from 'lucide-react';
 import { MegaMenu } from './MegaMenu';
@@ -199,15 +198,6 @@ export function Header() {
                   <span>Wholesale Rates:</span>
                   <span className="font-bold text-accent-primary">24h</span>
                 </div>
-
-                {/* Direct Sourcing Desk Hotline (Wide Screens) */}
-                <a
-                  href="tel:+18005550199"
-                  title="Direct Commercial Desk: +1 (800) 555-0199"
-                  className="hidden 2xl:flex p-1.5 rounded-full border border-slate-200 bg-white text-slate-700 hover:text-slate-900 hover:border-accent-border transition-colors shrink-0 shadow-xs"
-                >
-                  <PhoneCall className="w-3.5 h-3.5 text-accent-secondary" />
-                </a>
 
                 {/* Embedded Compact Theme Selector */}
                 <div className="hidden sm:block shrink-0">

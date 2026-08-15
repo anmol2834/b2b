@@ -9,10 +9,15 @@ import {
   Clock, 
   Send, 
   Lock, 
-  PhoneCall, 
-  Headset, 
   Check,
-  FileCheck2
+  FileCheck2,
+  Boxes,
+  FileText,
+  Globe2,
+  TrendingDown,
+  Sparkles,
+  CheckCircle2,
+  Layers
 } from 'lucide-react';
 
 const DIVISIONS_OPTIONS = [
@@ -36,11 +41,27 @@ const VOLUME_OPTIONS = [
   { id: 'tier-4', label: 'Annual Master Supply', sub: '$1M+ Enterprise Contract' },
 ];
 
-const SPECIALIST_DESKS = [
-  { division: 'Sanitary & Commercial Bath', lead: 'Senior Plumbing Specifier', status: 'Online • 15m Response', phone: '+1 (800) 555-0191' },
-  { division: 'Hospitality Amenities & Linen', lead: 'Bulk FF&E Supply Manager', status: 'Online • 20m Response', phone: '+1 (800) 555-0192' },
-  { division: 'Entrance Portals & Access', lead: 'Commercial Access Engineer', status: 'Online • 10m Response', phone: '+1 (800) 555-0193' },
-  { division: 'Industrial MRO & Dock Systems', lead: 'Industrial Logistics Consultant', status: 'Online • 25m Response', phone: '+1 (800) 555-0194' },
+const PROCUREMENT_ASSURANCES = [
+  {
+    icon: Boxes,
+    title: 'Unified Multi-Brand Invoicing',
+    desc: 'Consolidate 10+ manufacturer brands under a single purchase order and single delivery manifest.',
+  },
+  {
+    icon: FileText,
+    title: 'Complete Submittal Dossiers',
+    desc: 'Engineering submittal sheets, EN/ASTM compliance certificates, and BIM Revit files ready for architect sign-off.',
+  },
+  {
+    icon: Globe2,
+    title: 'Bonded Warehouse Staging',
+    desc: 'Free 60-day buffer inventory holding at regional logistics hubs to match construction milestones.',
+  },
+  {
+    icon: TrendingDown,
+    title: 'Direct Factory Margin Pass-Through',
+    desc: 'Save 15% to 32% compared to standard multi-tier dealer networks with direct distributor contracts.',
+  },
 ];
 
 export function BOQEngine() {
@@ -582,58 +603,53 @@ export function BOQEngine() {
             </ScrollItemFade>
           </div>
 
-          {/* Specialist Desks & Direct Routing (4 Cols) with Scroll Fade */}
+          {/* Enterprise Procurement Assurances & Guarantees (4 Cols) with Scroll Fade */}
           <div className="lg:col-span-4">
             <ScrollItemFade className="space-y-4">
-              {/* Direct Division Desks */}
-              <div className="p-6 rounded-3xl border border-slate-200 bg-white space-y-4 shadow-xl shadow-slate-900/5">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-100 text-xs font-tech">
-                  <span className="flex items-center gap-1.5 text-[#0F172A] font-bold">
-                    <Headset className="w-4 h-4 text-accent-primary" />
-                    <span>Direct Commercial Desks</span>
-                  </span>
-                  <span className="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">LIVE</span>
+              
+              {/* Enterprise Supply Guarantees Card */}
+              <div className="p-6 rounded-3xl border border-slate-200 bg-white space-y-3.5 shadow-xl shadow-slate-900/5">
+                <div className="flex items-center gap-2 pb-2 border-b border-slate-100 text-xs font-tech text-[#0F172A] font-bold">
+                  <ShieldCheck className="w-4 h-4 text-accent-primary" />
+                  <span>Enterprise Institutional Assurances</span>
                 </div>
 
                 <div className="space-y-2.5">
-                  {SPECIALIST_DESKS.map((desk) => (
-                    <div
-                      key={desk.division}
-                      className="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/70 hover:bg-white hover:border-accent-border transition-colors"
-                    >
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-xs font-display font-bold text-[#0F172A]">
-                          {desk.division}
-                        </span>
-                        <span className="text-[9px] font-tech text-emerald-600 font-semibold">
-                          {desk.status.split('•')[0]}
-                        </span>
-                      </div>
-                      <span className="text-[10px] font-tech text-slate-500 block mb-1.5">
-                        {desk.lead}
-                      </span>
-                      <a
-                        href={`tel:${desk.phone}`}
-                        className="text-[11px] font-tech text-accent-primary hover:underline flex items-center gap-1 font-semibold"
+                  {PROCUREMENT_ASSURANCES.map((assure) => {
+                    const Icon = assure.icon;
+                    return (
+                      <div
+                        key={assure.title}
+                        className="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 hover:bg-white transition-colors flex items-start gap-3"
                       >
-                        <PhoneCall className="w-3 h-3 text-accent-primary" />
-                        <span>{desk.phone}</span>
-                      </a>
-                    </div>
-                  ))}
+                        <div className="p-2 rounded-xl border border-accent-border bg-accent-surface text-accent-primary shrink-0 shadow-xs mt-0.5">
+                          <Icon className="w-3.5 h-3.5" />
+                        </div>
+                        <div className="min-w-0">
+                          <h4 className="text-xs font-display font-bold text-[#0F172A] mb-0.5">
+                            {assure.title}
+                          </h4>
+                          <p className="text-[10.5px] font-body text-slate-600 leading-relaxed">
+                            {assure.desc}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
               {/* Direct Manufacturer Warranty Guarantee */}
-              <div className="p-5 rounded-3xl border border-slate-200 bg-slate-50/80 space-y-2 text-xs font-tech text-slate-600">
+              <div className="p-4 rounded-2xl border border-slate-200 bg-slate-50/80 space-y-1.5 text-xs font-tech text-slate-600">
                 <div className="flex items-center gap-2 text-[#0F172A] font-bold">
-                  <ShieldCheck className="w-4 h-4 text-accent-primary" />
-                  <span>100% Genuine OEM Supply</span>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>100% Genuine OEM Factory Submittals</span>
                 </div>
-                <p className="text-[11px] leading-relaxed text-slate-500">
-                  All delivered equipment and fixtures are sourced direct from manufacturer lines with full factory test certificates and multi-year warranties.
+                <p className="text-[10.5px] leading-relaxed text-slate-500">
+                  Every order includes authenticated factory test submittals, full CAD/BIM Revit dossiers, and direct manufacturer warranty coverage.
                 </p>
               </div>
+
             </ScrollItemFade>
           </div>
 

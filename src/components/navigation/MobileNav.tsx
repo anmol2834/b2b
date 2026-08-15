@@ -365,14 +365,11 @@ export function MobileNav({ isOpen, onClose, onRequestQuote }: MobileNavProps) {
                 <span>Attach Requirement List (.xlsx / .pdf)</span>
               </a>
 
-              {/* Wholesale Hotline */}
-              <a
-                href="tel:+18005550199"
-                className="w-full py-1 text-center text-[10px] font-tech text-slate-500 hover:text-slate-900 flex items-center justify-center gap-1.5 transition-colors"
-              >
-                <PhoneCall className="w-3 h-3 text-accent-secondary" />
-                <span>Direct Commercial Desk: +1 (800) 555-0199</span>
-              </a>
+              {/* Wholesale Authentication Badge */}
+              <div className="w-full py-1 text-center text-[10px] font-tech text-slate-500 flex items-center justify-center gap-1.5">
+                <ShieldCheck className="w-3 h-3 text-accent-primary" />
+                <span>Authorized Multi-Brand Master Distributor</span>
+              </div>
             </div>
           </motion.aside>
         </div>
