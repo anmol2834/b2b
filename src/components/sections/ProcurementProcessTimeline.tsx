@@ -1,33 +1,34 @@
 'use client';
 
 import React from 'react';
+import { TypographyMerge } from '@/components/core/TypographyMerge';
 
 export function ProcurementProcessTimeline() {
   const steps = [
     {
       number: '01',
-      title: 'Tell us what you need',
-      detail: 'Share your BOQ, architectural drawings, specification schedule or custom requirement.',
+      title: 'Submit Specifications',
+      detail: 'Share your project BOQ, brand schedule list, or required manufacturer product codes.',
     },
     {
       number: '02',
-      title: 'We identify the right products',
-      detail: 'Our engineering desk matches multi-brand specifications, compliance requirements, and lead times.',
+      title: 'Direct Brand Matching',
+      detail: 'We cross-reference requirements with our direct factory distribution agreements for volume discounts.',
     },
     {
       number: '03',
-      title: 'You receive a quotation',
-      detail: 'Factory-tier transparent volume pricing, delivery milestones, and formal submittal packages.',
+      title: 'Wholesale Quotation',
+      detail: 'Receive transparent factory-tier bulk quotes, compliance certificates, and logistical timelines.',
     },
     {
       number: '04',
-      title: 'We coordinate supply',
-      detail: 'Consolidated bonded staging, quality audits, unified billing, and scheduled palletized delivery.',
+      title: 'Freight Consolidation',
+      detail: 'We gather products from global brand factories into bonded staging warehouses for a single unified delivery.',
     },
     {
       number: '05',
-      title: 'Your project moves forward',
-      detail: 'Direct manufacturer warranty coverage, spare parts facilitation, and long-term facility support.',
+      title: 'Factory-Backed Delivery',
+      detail: 'Secure handover at site with direct manufacturer warranties, complete submittal files, and OEM support.',
     },
   ];
 
@@ -40,11 +41,12 @@ export function ProcurementProcessTimeline() {
           <div className="text-[11px] font-tech font-bold uppercase tracking-widest text-[#A8824C] mb-3">
             THE PROCESS
           </div>
-          <h2 className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight leading-[1.1]">
-            Simple procurement.
-            <br />
-            Serious execution.
-          </h2>
+          <TypographyMerge
+            as="h2"
+            className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight leading-[1.1]"
+          >
+            Simple bulk ordering. Reliable logistics.
+          </TypographyMerge>
         </div>
 
         {/* 5-Step Minimal Horizontal Timeline */}

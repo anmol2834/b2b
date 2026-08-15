@@ -42,7 +42,7 @@ export function ProductQuoteForm({
           SKU Reference: {productCode}
         </p>
         <p className="text-xs font-body text-[#5C5852] max-w-sm mx-auto">
-          Our procurement desk will prepare institutional volume pricing and deliver the submittal packet within 24 hours.
+          Our wholesale supply desk will prepare volume pricing and deliver the submittal packet within 24 hours.
         </p>
         <button
           type="button"

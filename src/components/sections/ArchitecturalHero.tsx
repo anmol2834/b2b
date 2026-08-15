@@ -58,7 +58,7 @@ export function ArchitecturalHero({
 
             {/* Supporting Line */}
             <p className="text-base sm:text-lg font-body text-[#5C5852] max-w-xl leading-relaxed mb-8">
-              Premium products and procurement solutions for hospitality, commercial and industrial spaces.
+              Premium brand sourcing and consolidated B2B wholesale supply for hospitality, commercial, and industrial projects.
             </p>
 
             {/* CTA Buttons */}
@@ -76,7 +76,7 @@ export function ArchitecturalHero({
                 onClick={onStartProject}
                 className="px-6 sm:px-7 py-3.5 border border-[#141413] bg-transparent text-[#141413] text-xs font-tech font-semibold tracking-widest uppercase hover:bg-[#141413] hover:text-[#FAF9F5] transition-all duration-300 flex items-center gap-2 group whitespace-nowrap"
               >
-                <span>Start a Project</span>
+                <span>Request Bulk Quote</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0" />
               </button>
             </div>

@@ -82,7 +82,7 @@ export function AlternatingScrollMatrix({
               Architectural Submittal Dossiers & Compliance.
             </h3>
             <p className="text-sm font-body text-[#5C5852] leading-relaxed break-words">
-              Every item supplied is cross-verified against architectural specifications, LEED credits, and international fire and acoustic standards before tender sign-off.
+              Every branded product we supply is certified to match architectural specifications, LEED requirements, and standard compliance guidelines prior to wholesale dispatch.
             </p>
 
             <div className="pt-4 border-t border-[#E5E0D5] flex items-center gap-2 text-xs font-tech text-[#141413]">
@@ -95,7 +95,7 @@ export function AlternatingScrollMatrix({
               onClick={() => onRequestQuote()}
               className="px-6 py-3 bg-[#141413] text-[#FAF9F5] text-xs font-tech font-semibold uppercase tracking-widest hover:bg-[#A8824C] transition-colors"
             >
-              Request Spec Dossier
+              Request Spec Sheets
             </button>
           </div>
 
@@ -182,7 +182,7 @@ export function AlternatingScrollMatrix({
               Zero-Friction Warehouse Staging & Handover.
             </h3>
             <p className="text-sm font-body text-[#5C5852] leading-relaxed break-words">
-              We eliminate site congestion by scheduling multi-brand container offloading strictly aligned with your general contractor&apos;s installation sequence.
+              We coordinate logistics by scheduling multi-brand container freight offloading to align directly with your site delivery and staging schedules.
             </p>
 
             <div className="p-4 bg-[#F3EFE6] border border-[#E5E0D5] space-y-2">
@@ -191,7 +191,7 @@ export function AlternatingScrollMatrix({
                 <span>Consolidated PO & Invoicing</span>
               </div>
               <p className="text-xs font-body text-[#5C5852] text-xs">
-                10+ factory suppliers managed through a single master distributor invoice.
+                10+ global manufacturers supplied through a single master distributor invoice.
               </p>
             </div>
           </div>

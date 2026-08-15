@@ -26,12 +26,12 @@ export function ArchitecturalFooter({ onRequestQuote }: ArchitecturalFooterProps
             </div>
 
             <p className="text-xs sm:text-sm font-body text-[#5C5852] max-w-sm leading-relaxed">
-              Professional product sourcing and supply for hospitality, commercial and industrial projects.
+              B2B wholesale distributor supplying premium branded products directly to hospitality, commercial, and industrial businesses.
             </p>
 
             <div className="pt-2">
               <span className="text-[10px] font-tech text-[#8E8981] uppercase tracking-widest block">
-                DIRECT MASTER DISTRIBUTOR • MULTI-BRAND SUPPLY
+                DIRECT WHOLESALE CHANNELS • CONSOLIDATED BRAND SUPPLY
               </span>
             </div>
           </div>
@@ -61,7 +61,7 @@ export function ArchitecturalFooter({ onRequestQuote }: ArchitecturalFooterProps
                 <li><a href="#industries" className="hover:text-[#141413] transition-colors">Hospitality</a></li>
                 <li><a href="#industries" className="hover:text-[#141413] transition-colors">Commercial</a></li>
                 <li><a href="#industries" className="hover:text-[#141413] transition-colors">Industrial</a></li>
-                <li><a href="#procurement" className="hover:text-[#141413] transition-colors">Projects</a></li>
+                <li><a href="#supply-chain" className="hover:text-[#141413] transition-colors">Supply Chain</a></li>
               </ul>
             </div>
 
@@ -72,7 +72,7 @@ export function ArchitecturalFooter({ onRequestQuote }: ArchitecturalFooterProps
               </div>
               <ul className="space-y-2.5 text-xs font-body text-[#5C5852]">
                 <li><a href="#why-us" className="hover:text-[#141413] transition-colors">About</a></li>
-                <li><a href="#procurement" className="hover:text-[#141413] transition-colors">Projects</a></li>
+                <li><a href="#supply-chain" className="hover:text-[#141413] transition-colors">Sourcing</a></li>
                 <li><a href="#solutions" className="hover:text-[#141413] transition-colors">Brands</a></li>
                 <li><a href="#boq-uploader" className="hover:text-[#141413] transition-colors">Contact</a></li>
               </ul>
@@ -85,7 +85,7 @@ export function ArchitecturalFooter({ onRequestQuote }: ArchitecturalFooterProps
               </div>
               <ul className="space-y-2.5 text-xs font-body text-[#5C5852]">
                 <li><a href="#boq-uploader" className="hover:text-[#141413] transition-colors">Catalogues</a></li>
-                <li><a href="#procurement" className="hover:text-[#141413] transition-colors">Datasheets</a></li>
+                <li><a href="#supply-chain" className="hover:text-[#141413] transition-colors">Submittals</a></li>
                 <li><a href="#solutions" className="hover:text-[#141413] transition-colors">Guides</a></li>
                 <li><a href="#why-us" className="hover:text-[#141413] transition-colors">FAQs</a></li>
               </ul>
@@ -98,7 +98,7 @@ export function ArchitecturalFooter({ onRequestQuote }: ArchitecturalFooterProps
         {/* Bottom Legal Strip */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-tech text-[#8E8981]">
           <div>
-            © {new Date().getFullYear()} VERTEX PROCUREMENT PARTNER. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} VERTEX WHOLESALE B2B SUPPLY. ALL RIGHTS RESERVED.
           </div>
           <div className="flex items-center space-x-6">
             <a href="#" className="hover:text-[#141413] transition-colors">Privacy</a>

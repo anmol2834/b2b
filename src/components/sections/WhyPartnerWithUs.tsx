@@ -8,22 +8,22 @@ export function WhyPartnerWithUs() {
     {
       label: 'MULTI-CATEGORY',
       title: 'Integrated Sourcing',
-      desc: 'Source across multiple professional product categories from sanitaryware to automated doors under a single unified purchase agreement.',
+      desc: 'Source across multiple professional brand categories from sanitaryware to automated doors under a single unified B2B invoice.',
     },
     {
       label: 'PROJECT-FOCUSED',
       title: 'Specification Alignment',
-      desc: 'Built around actual project requirements, schedule milestones, and architectural compliance rather than just individual products.',
+      desc: 'All products are matched exactly with architectural specifications, fire safety certifications, and project submittals.',
     },
     {
-      label: 'B2B PROCUREMENT',
-      title: 'Institutional Terms',
-      desc: 'Designed specifically for bulk orders, commercial submittal dossiers, factory-direct volume pricing, and consolidated palletized dispatch.',
+      label: 'B2B WHOLESALE',
+      title: 'Direct Factory Pricing',
+      desc: 'Access official wholesale trade terms, high-volume price tables, and freight consolidation from premier global factories.',
     },
     {
       label: 'HUMAN SUPPORT',
       title: 'Dedicated Account Desk',
-      desc: 'Talk to an experienced technical procurement specialist who understands blueprints and engineering specs when requirements get complex.',
+      desc: 'Talk to an experienced technical supply specialist who understands blueprints and brand schedules when specifications get complex.',
     },
   ];
 

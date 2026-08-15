@@ -28,9 +28,9 @@ const fontTech = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'VERTEX | Architecture, Commercial & Industrial Procurement Partner',
+  title: 'VERTEX | Premium B2B Wholesale Supply & Brand Distribution',
   description:
-    'One professional partner for products across hospitality, commercial, architectural, construction and industrial projects.',
+    'Wholesale B2B distributor and bulk supply partner of premier branded products for hospitality, commercial, architectural, and industrial projects.',
 };
 
 export default function RootLayout({

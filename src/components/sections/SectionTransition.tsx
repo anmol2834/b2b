@@ -9,18 +9,18 @@ export function SectionTransition() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         
         <div className="text-[11px] font-tech uppercase tracking-widest text-[#A8824C] font-semibold mb-6">
-          END-TO-END PROCUREMENT
+          CONSOLIDATED BULK SUPPLY
         </div>
 
         <TypographyMerge
           as="h2"
           className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-[#141413] tracking-tight leading-tight mb-8 text-center"
         >
-          From specification to supply.
+          From factory floor to your project site.
         </TypographyMerge>
 
         <p className="text-base sm:text-xl font-body text-[#5C5852] max-w-2xl mx-auto leading-relaxed">
-          We help businesses source the products their spaces need — across multiple categories, brands and project requirements.
+          We supply businesses with direct wholesale products from premier global brands — consolidated onto a single delivery contract with zero margin bleed.
         </p>
 
         <div className="mt-12 flex items-center justify-center gap-3">

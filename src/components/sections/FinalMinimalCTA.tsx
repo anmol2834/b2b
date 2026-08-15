@@ -33,7 +33,7 @@ export function FinalMinimalCTA({ onRequestQuote }: FinalMinimalCTAProps) {
           </button>
 
           <a
-            href="https://wa.me/?text=Hello%20Vertex%20Procurement%20Team%2C%20I%20have%20a%20new%20project%20requirement."
+            href="https://wa.me/?text=Hello%20Vertex%20Supply%20Team%2C%20I%20have%20a%20bulk%20supply%20requirement."
             target="_blank"
             rel="noopener noreferrer"
             className="px-9 py-4 border border-[#141413] bg-transparent text-[#141413] text-xs font-tech font-semibold tracking-widest uppercase hover:bg-[#141413] hover:text-[#FAF9F5] transition-all duration-300 flex items-center gap-2"

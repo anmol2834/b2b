@@ -82,7 +82,7 @@ export function QuoteModal({ isOpen, onClose, defaultDivision }: QuoteModalProps
               Inquiry Dispatched
             </h3>
             <p className="text-sm font-body text-[#5C5852] max-w-md">
-              Our dedicated procurement desk will review your specification requirements and furnish a formal quotation within 24 business hours.
+              Our wholesale supply desk will review your specifications and furnish a bulk contract quotation within 24 business hours.
             </p>
           </div>
         ) : (
@@ -90,10 +90,10 @@ export function QuoteModal({ isOpen, onClose, defaultDivision }: QuoteModalProps
             <div className="mb-8 border-b border-[#E5E0D5] pb-6">
               <div className="flex items-center gap-2 text-[10px] font-tech font-semibold tracking-widest uppercase text-[#A8824C] mb-2">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Enterprise Sourcing Desk • 24H SLA</span>
+                <span>Wholesale B2B Supply Desk • 24H SLA</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#141413] tracking-tight">
-                Request a Project Quotation
+                Request B2B Bulk Quotation
               </h2>
               <p className="text-xs sm:text-sm font-body text-[#5C5852] mt-1.5">
                 Direct manufacturer-tier wholesale pricing, consolidated billing, and project specification support.

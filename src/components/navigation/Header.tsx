@@ -32,7 +32,7 @@ export function Header() {
     { label: 'Products', href: '#categories' },
     { label: 'Solutions', href: '#solutions' },
     { label: 'Industries', href: '#industries' },
-    { label: 'Projects', href: '#procurement' },
+    { label: 'Supply Chain', href: '#supply-chain' },
     { label: 'About', href: '#why-us' },
   ];
 
@@ -57,7 +57,7 @@ export function Header() {
                   VERTEX
                 </span>
                 <span className="text-[8.5px] sm:text-[9px] font-tech text-[#8E8981] tracking-widest uppercase mt-0.5 whitespace-nowrap">
-                  Procurement Partner
+                  Wholesale B2B Supply
                 </span>
               </div>
             </a>
@@ -79,7 +79,7 @@ export function Header() {
             <div className="flex items-center gap-2 sm:gap-3.5 shrink-0">
               {/* WhatsApp / Contact Trigger */}
               <a
-                href="https://wa.me/?text=Hello%20Vertex%20Procurement%20Team%2C%20I%20have%20a%20project%20inquiry."
+                href="https://wa.me/?text=Hello%20Vertex%20Supply%20Team%2C%20I%20have%20a%20bulk%20supply%20inquiry."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden sm:inline-flex items-center gap-1.5 text-xs font-tech tracking-wider uppercase text-[#5C5852] hover:text-[#141413] transition-colors px-2 py-1 whitespace-nowrap"
@@ -130,7 +130,7 @@ export function Header() {
 
             <div className="pt-2 flex flex-col gap-3">
               <a
-                href="https://wa.me/?text=Hello%20Vertex%20Procurement%20Team%2C%20I%20have%20a%20project%20inquiry."
+                href="https://wa.me/?text=Hello%20Vertex%20Supply%20Team%2C%20I%20have%20a%20bulk%20supply%20inquiry."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-2.5 text-center text-xs font-tech uppercase tracking-wider border border-[#E5E0D5] text-[#141413] flex items-center justify-center gap-2 hover:bg-[#EBE6DC] transition-colors whitespace-nowrap"

@@ -59,7 +59,7 @@ export function TheFourWorlds() {
             as="h2"
             className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight leading-[1.1]"
           >
-            Four categories. One procurement partner.
+            Four categories. One wholesale supply channel.
           </TypographyMerge>
         </div>
 

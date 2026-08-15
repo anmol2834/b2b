@@ -63,13 +63,13 @@ export default function LuxuryArchitecturalB2BPage() {
       {/* 5. Industries Section (Interactive Hover Reveal) */}
       <IndustriesInteractive />
 
-      {/* 6. Project Procurement Banner (Full-Width Architectural Backdrop) */}
+      {/* 6. B2B Wholesale Supply Banner */}
       <ProjectProcurementBanner
         onUploadBOQ={scrollToBOQ}
         onTalkToExpert={() => handleOpenQuote()}
       />
 
-      {/* 7. Procurement Process (5-Step Horizontal Timeline) */}
+      {/* 7. Supply Process (5-Step Horizontal Timeline) */}
       <ProcurementProcessTimeline />
 
       {/* 8. Why Us ("One requirement. Multiple possibilities.") */}

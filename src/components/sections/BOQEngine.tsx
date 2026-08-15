@@ -23,7 +23,7 @@ const DIVISIONS_OPTIONS = [
   { id: 'hospitality', label: 'Hotel Amenities & Bulk Linen FF&E Supplies', code: '02' },
   { id: 'entrance', label: 'Automated Entrance Portals & Access Control Gates', code: '03' },
   { id: 'industrial', label: 'Industrial Equipment & Logistics Facilities MRO', code: '04' },
-  { id: 'all', label: 'Complete Multi-Category Turnkey Procurement', code: 'ALL' },
+  { id: 'all', label: 'Multi-Category Consolidated Wholesale Supply', code: 'ALL' },
 ];
 
 export function BOQEngine() {
@@ -81,7 +81,7 @@ export function BOQEngine() {
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
           <div className="text-[11px] font-tech uppercase tracking-widest text-[#A8824C] font-semibold mb-3">
-            Project Procurement Desk
+            Wholesale B2B Supply Desk
           </div>
           <h2 className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight leading-[1.1]">
             Submit your Bill of Quantities.
@@ -124,7 +124,7 @@ export function BOQEngine() {
                 {/* 1. Category Selection */}
                 <div>
                   <label className="block text-xs font-tech uppercase tracking-wider text-[#141413] font-semibold mb-3">
-                    01. Select Relevant Procurement Divisions
+                    01. Select Relevant Supply Divisions
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {DIVISIONS_OPTIONS.map((item) => {
@@ -291,7 +291,7 @@ export function BOQEngine() {
           <div className="lg:col-span-4 space-y-6">
             <div className="p-6 bg-[#F3EFE6] border border-[#E5E0D5]">
               <h3 className="text-base font-display font-bold text-[#141413] mb-3">
-                Consolidated Procurement Service
+                Consolidated Wholesale Supply
               </h3>
               <p className="text-xs font-body text-[#5C5852] leading-relaxed mb-6">
                 Replace fragmented vendor negotiations with a single contractual partner. We align factory production lines directly to your project&apos;s installation timeline.
@@ -330,7 +330,7 @@ export function BOQEngine() {
                 Commercial Sourcing Team
               </div>
               <p className="text-xs font-body text-[#5C5852] mt-2 leading-relaxed">
-                Need immediate phone consultation for an urgent tender? Reach our senior procurement desk directly.
+                Need immediate phone consultation for an urgent wholesale bulk order? Reach our supply desk directly.
               </p>
               <div className="mt-4 pt-4 border-t border-[#E5E0D5] flex items-center justify-between text-xs font-tech">
                 <span className="text-[#5C5852]">WhatsApp Active:</span>
