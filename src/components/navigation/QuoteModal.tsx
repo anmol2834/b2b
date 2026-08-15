@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, CheckCircle2, FileSpreadsheet, Send, Building2, Phone, Mail, User } from 'lucide-react';
+import { X, CheckCircle2, FileSpreadsheet, Send, Building2, Phone, Mail, User, ShieldCheck } from 'lucide-react';
 import { DIVISIONS } from '@/config/divisions';
 
 interface QuoteModalProps {
@@ -22,6 +22,12 @@ export function QuoteModal({ isOpen, onClose, defaultDivision }: QuoteModalProps
     estimatedBudget: '$50k - $250k',
     notes: '',
   });
+
+  React.useEffect(() => {
+    if (defaultDivision) {
+      setSelectedDivision(defaultDivision);
+    }
+  }, [defaultDivision]);
 
   React.useEffect(() => {
     if (isOpen) {
@@ -49,19 +55,19 @@ export function QuoteModal({ isOpen, onClose, defaultDivision }: QuoteModalProps
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" data-lenis-prevent="true">
       {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity duration-300"
+        className="fixed inset-0 bg-[#141413]/60 backdrop-blur-xs transition-opacity duration-300"
         onClick={onClose}
       />
 
       {/* Modal Container */}
       <div 
         data-lenis-prevent="true"
-        className="relative w-full max-w-2xl max-h-[90dvh] overflow-y-auto overscroll-contain rounded-3xl border border-slate-200 bg-white text-[#0F172A] p-6 sm:p-8 shadow-2xl shadow-slate-900/15 z-10 touch-pan-y"
+        className="relative w-full max-w-2xl max-h-[90dvh] overflow-y-auto overscroll-contain bg-[#FAF9F5] border border-[#E5E0D5] text-[#141413] p-6 sm:p-10 shadow-2xl z-10 touch-pan-y"
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-full border border-slate-200 bg-slate-50 text-slate-500 hover:text-slate-900 hover:border-slate-300 transition-colors"
+          className="absolute top-6 right-6 p-2 text-[#8E8981] hover:text-[#141413] transition-colors"
           aria-label="Close quote modal"
         >
           <X className="w-5 h-5" />
@@ -69,35 +75,36 @@ export function QuoteModal({ isOpen, onClose, defaultDivision }: QuoteModalProps
 
         {submitted ? (
           <div className="py-12 text-center flex flex-col items-center justify-center">
-            <div className="p-4 rounded-full border border-accent-border bg-accent-surface text-accent-primary mb-4 animate-bounce">
-              <CheckCircle2 className="w-10 h-10" />
+            <div className="w-12 h-12 border border-[#A8824C] flex items-center justify-center text-[#A8824C] mb-4">
+              <CheckCircle2 className="w-6 h-6" />
             </div>
-            <h3 className="text-2xl font-display font-bold text-[#0F172A] mb-2">
-              Inquiry Dispatched Successfully
+            <h3 className="text-2xl font-display font-bold text-[#141413] mb-2">
+              Inquiry Dispatched
             </h3>
-            <p className="text-sm font-body text-slate-600 max-w-md">
-              Our commercial supply desk is reviewing your requirements. A dedicated wholesale account manager will contact you within 24 hours.
+            <p className="text-sm font-body text-[#5C5852] max-w-md">
+              Our dedicated procurement desk will review your specification requirements and furnish a formal quotation within 24 business hours.
             </p>
           </div>
         ) : (
           <div>
-            <div className="mb-6">
-              <span className="text-xs font-tech font-semibold tracking-wider uppercase text-accent-primary">
-                Direct Wholesale Inquiry • 24H SLA
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#0F172A] mt-1">
-                Request Bulk Volume Pricing
+            <div className="mb-8 border-b border-[#E5E0D5] pb-6">
+              <div className="flex items-center gap-2 text-[10px] font-tech font-semibold tracking-widest uppercase text-[#A8824C] mb-2">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Enterprise Sourcing Desk • 24H SLA</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#141413] tracking-tight">
+                Request a Project Quotation
               </h2>
-              <p className="text-xs sm:text-sm font-body text-slate-600 mt-1">
-                Direct factory-tier pricing, consolidated palletized delivery & manufacturer warranties.
+              <p className="text-xs sm:text-sm font-body text-[#5C5852] mt-1.5">
+                Direct manufacturer-tier wholesale pricing, consolidated billing, and project specification support.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {/* Division Selector Tabs */}
               <div>
-                <label className="block text-xs font-tech text-slate-600 uppercase mb-2 font-medium">
-                  Target Wholesale Category
+                <label className="block text-[11px] font-tech text-[#5C5852] uppercase tracking-wider mb-2 font-medium">
+                  Primary Category
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {Object.values(DIVISIONS).map((div) => {
@@ -107,10 +114,10 @@ export function QuoteModal({ isOpen, onClose, defaultDivision }: QuoteModalProps
                         key={div.id}
                         type="button"
                         onClick={() => setSelectedDivision(div.id)}
-                        className={`py-2 px-3 rounded-xl text-xs font-tech font-medium transition-all text-left truncate ${
+                        className={`py-2 px-3 text-xs font-tech transition-all text-left truncate ${
                           active
-                            ? 'border border-accent-border bg-accent-surface text-accent-primary font-bold shadow-xs'
-                            : 'border border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300'
+                            ? 'border border-[#141413] bg-[#141413] text-[#FAF9F5] font-semibold'
+                            : 'border border-[#E5E0D5] bg-white text-[#5C5852] hover:border-[#141413]'
                         }`}
                       >
                         {div.shortName}
@@ -121,71 +128,71 @@ export function QuoteModal({ isOpen, onClose, defaultDivision }: QuoteModalProps
               </div>
 
               {/* Form Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-tech text-slate-600 uppercase mb-1">
+                  <label className="block text-[11px] font-tech text-[#5C5852] uppercase tracking-wider mb-1">
                     Contact Name *
                   </label>
                   <div className="relative">
-                    <User className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
+                    <User className="absolute left-3 top-3 w-4 h-4 text-[#8E8981]" />
                     <input
                       type="text"
                       required
-                      placeholder="e.g. David Vance"
+                      placeholder="e.g. Marcus Vance"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50/70 text-xs font-body text-slate-900 placeholder-slate-400 focus:outline-none focus:border-accent-primary focus:bg-white transition-colors"
+                      className="w-full pl-9 pr-3 py-2.5 bg-white border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413] transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-tech text-slate-600 uppercase mb-1">
-                    Company / Organization *
+                  <label className="block text-[11px] font-tech text-[#5C5852] uppercase tracking-wider mb-1">
+                    Company / Firm *
                   </label>
                   <div className="relative">
-                    <Building2 className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
+                    <Building2 className="absolute left-3 top-3 w-4 h-4 text-[#8E8981]" />
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Turner Construction"
+                      placeholder="e.g. Foster & Partners / Hilton"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50/70 text-xs font-body text-slate-900 placeholder-slate-400 focus:outline-none focus:border-accent-primary focus:bg-white transition-colors"
+                      className="w-full pl-9 pr-3 py-2.5 bg-white border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413] transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-tech text-slate-600 uppercase mb-1">
+                  <label className="block text-[11px] font-tech text-[#5C5852] uppercase tracking-wider mb-1">
                     Work Email *
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
+                    <Mail className="absolute left-3 top-3 w-4 h-4 text-[#8E8981]" />
                     <input
                       type="email"
                       required
-                      placeholder="e.g. d.vance@turner.com"
+                      placeholder="e.g. m.vance@studio.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50/70 text-xs font-body text-slate-900 placeholder-slate-400 focus:outline-none focus:border-accent-primary focus:bg-white transition-colors"
+                      className="w-full pl-9 pr-3 py-2.5 bg-white border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413] transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-tech text-slate-600 uppercase mb-1">
+                  <label className="block text-[11px] font-tech text-[#5C5852] uppercase tracking-wider mb-1">
                     Phone / WhatsApp *
                   </label>
                   <div className="relative">
-                    <Phone className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
+                    <Phone className="absolute left-3 top-3 w-4 h-4 text-[#8E8981]" />
                     <input
                       type="tel"
                       required
                       placeholder="e.g. +1 (555) 019-2834"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50/70 text-xs font-body text-slate-900 placeholder-slate-400 focus:outline-none focus:border-accent-primary focus:bg-white transition-colors"
+                      className="w-full pl-9 pr-3 py-2.5 bg-white border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413] transition-colors"
                     />
                   </div>
                 </div>
@@ -193,32 +200,31 @@ export function QuoteModal({ isOpen, onClose, defaultDivision }: QuoteModalProps
 
               {/* Requirement Notes */}
               <div>
-                <label className="block text-xs font-tech text-slate-600 uppercase mb-1">
-                  Product Item Codes / Quantities / Requirements
+                <label className="block text-[11px] font-tech text-[#5C5852] uppercase tracking-wider mb-1">
+                  BOQ Summary / Product Codes / Quantity Estimates
                 </label>
                 <textarea
-                  rows={2}
-                  placeholder="Paste item codes, specifications or estimated quantities here..."
+                  rows={3}
+                  placeholder="Mention product codes, finishes, project timeline, or paste your requirements list here..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full p-3 rounded-xl border border-slate-200 bg-slate-50/70 text-xs font-body text-slate-900 placeholder-slate-400 focus:outline-none focus:border-accent-primary focus:bg-white transition-colors"
+                  className="w-full p-3 bg-white border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413] transition-colors"
                 />
               </div>
 
               {/* Submit CTA */}
-              <div className="pt-2 flex items-center justify-between gap-4">
-                <div className="text-[11px] font-tech text-slate-500 flex items-center gap-1.5">
-                  <FileSpreadsheet className="w-3.5 h-3.5 text-accent-primary" />
-                  <span>24-Hour SLA Direct Quote</span>
+              <div className="pt-4 border-t border-[#E5E0D5] flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="text-[11px] font-tech text-[#5C5852] flex items-center gap-1.5">
+                  <FileSpreadsheet className="w-3.5 h-3.5 text-[#A8824C]" />
+                  <span>Confidential RFQ • Direct OEM Pricing</span>
                 </div>
 
                 <button
                   type="submit"
-                  className="py-3 px-6 rounded-xl font-bold text-xs font-tech tracking-wider uppercase text-white flex items-center gap-2 shadow-sm transition-all transform active:scale-95 hover:brightness-110"
-                  style={{ backgroundColor: 'var(--accent-primary)' }}
+                  className="w-full sm:w-auto py-3 px-8 bg-[#141413] text-[#FAF9F5] font-semibold text-xs font-tech tracking-widest uppercase hover:bg-[#A8824C] transition-all flex items-center justify-center gap-2 active:scale-95"
                 >
-                  <Send className="w-3.5 h-3.5 text-white" />
-                  <span>Submit Volume Inquiry</span>
+                  <Send className="w-3.5 h-3.5" />
+                  <span>Submit Sourcing Request</span>
                 </button>
               </div>
             </form>

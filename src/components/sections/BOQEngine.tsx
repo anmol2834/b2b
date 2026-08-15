@@ -1,86 +1,40 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ScrollItemFade } from '@/components/core/ScrollItemFade';
 import { 
   FileSpreadsheet, 
   UploadCloud, 
   ShieldCheck, 
-  Clock, 
-  Send, 
-  Lock, 
   Check,
   FileCheck2,
   Boxes,
   FileText,
   Globe2,
   TrendingDown,
-  Sparkles,
-  CheckCircle2,
-  Layers
+  Send,
+  Building,
+  Mail,
+  User,
+  Phone
 } from 'lucide-react';
 
 const DIVISIONS_OPTIONS = [
-  { id: 'sanitary', label: 'Commercial Sanitaryware & Washroom Suites', code: 'DIV-01' },
-  { id: 'hospitality', label: 'Hotel Amenities & Bulk Linen FF&E Supplies', code: 'DIV-02' },
-  { id: 'entrance', label: 'Automated Entrance Portals & Access Control Gates', code: 'DIV-03' },
-  { id: 'industrial', label: 'Industrial Equipment & Logistics Facilities MRO', code: 'DIV-04' },
-  { id: 'turnkey', label: 'Full Multi-Category Bulk Purchase (All Divisions)', code: 'ALL-DIV' },
-];
-
-const TIMELINE_OPTIONS = [
-  { id: 'immediate', label: 'Immediate Dispatch', sub: '1-2 Weeks' },
-  { id: 'standard', label: 'Standard Project', sub: '1-3 Months' },
-  { id: 'recurring', label: 'Scheduled Phased Supply', sub: '3-6+ Months' },
-];
-
-const VOLUME_OPTIONS = [
-  { id: 'tier-1', label: 'Sample / Trial Batch', sub: 'Single Unit / Floor' },
-  { id: 'tier-2', label: 'Medium Project Volume', sub: '$50K – $250K Scope' },
-  { id: 'tier-3', label: 'Large Multi-Unit Bulk', sub: '$250K – $1M Scope' },
-  { id: 'tier-4', label: 'Annual Master Supply', sub: '$1M+ Enterprise Contract' },
-];
-
-const PROCUREMENT_ASSURANCES = [
-  {
-    icon: Boxes,
-    title: 'Unified Multi-Brand Invoicing',
-    desc: 'Consolidate 10+ manufacturer brands under a single purchase order and single delivery manifest.',
-  },
-  {
-    icon: FileText,
-    title: 'Complete Submittal Dossiers',
-    desc: 'Engineering submittal sheets, EN/ASTM compliance certificates, and BIM Revit files ready for architect sign-off.',
-  },
-  {
-    icon: Globe2,
-    title: 'Bonded Warehouse Staging',
-    desc: 'Free 60-day buffer inventory holding at regional logistics hubs to match construction milestones.',
-  },
-  {
-    icon: TrendingDown,
-    title: 'Direct Factory Margin Pass-Through',
-    desc: 'Save 15% to 32% compared to standard multi-tier dealer networks with direct distributor contracts.',
-  },
+  { id: 'sanitary', label: 'Commercial Sanitaryware & Washroom Suites', code: '01' },
+  { id: 'hospitality', label: 'Hotel Amenities & Bulk Linen FF&E Supplies', code: '02' },
+  { id: 'entrance', label: 'Automated Entrance Portals & Access Control Gates', code: '03' },
+  { id: 'industrial', label: 'Industrial Equipment & Logistics Facilities MRO', code: '04' },
+  { id: 'all', label: 'Complete Multi-Category Turnkey Procurement', code: 'ALL' },
 ];
 
 export function BOQEngine() {
-  const [currentStep, setCurrentStep] = useState<number>(1);
-  const [selectedDivisions, setSelectedDivisions] = useState<string[]>(['sanitary', 'turnkey']);
-  const [selectedTimeline, setSelectedTimeline] = useState<string>('standard');
-  const [selectedVolume, setSelectedVolume] = useState<string>('tier-3');
-  
-  // File upload state
+  const [selectedDivisions, setSelectedDivisions] = useState<string[]>(['sanitary']);
   const [uploadedFile, setUploadedFile] = useState<{ name: string; size: string } | null>(null);
   const [requirementNotes, setRequirementNotes] = useState<string>('');
   
-  // Contact state
   const [contactForm, setContactForm] = useState({
     fullName: '',
     workEmail: '',
     companyName: '',
-    roleTitle: '',
-    deliveryLocation: '',
     phoneWhatsApp: '',
   });
 
@@ -113,546 +67,284 @@ export function BOQEngine() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate high-speed inquiry token generation
     setTimeout(() => {
       setIsSubmitting(false);
       const randomId = Math.floor(1000 + Math.random() * 9000);
-      setSubmittedToken(`INQ-2026-${randomId}`);
-    }, 850);
+      setSubmittedToken(`BOQ-2026-${randomId}`);
+    }, 700);
   };
 
   return (
-    <section id="boq-uploader" className="perf-section-cv relative bg-[#F8FAFC] text-[#0F172A] px-4 sm:px-6 md:px-12 lg:px-20 py-24 arch-grid-light border-b border-slate-200 overflow-hidden">
-      
-      {/* Ambient Glow */}
-      <div 
-        className="pointer-events-none absolute -top-40 right-1/3 w-[650px] h-[450px] rounded-full blur-[140px] opacity-10"
-        style={{ backgroundColor: 'var(--accent-primary)' }}
-      />
-
-      <div className="mx-auto max-w-7xl relative z-10">
+    <section id="boq-uploader" className="py-28 bg-[#FAF9F5] border-t border-[#E5E0D5]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Scroll Fade */}
-        <ScrollItemFade className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 text-xs font-tech uppercase tracking-wider rounded-full border border-accent-border bg-accent-surface text-accent-primary font-semibold">
-            <FileSpreadsheet className="w-3.5 h-3.5" />
-            <span>Fast Wholesale & Bulk Product Inquiry Desk</span>
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16">
+          <div className="text-[11px] font-tech uppercase tracking-widest text-[#A8824C] font-semibold mb-3">
+            Project Procurement Desk
           </div>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold text-[#0F172A] tracking-tight leading-[1.12]">
-            Request Instant Bulk Pricing &{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0F172A] via-slate-800 to-accent-primary">
-              Wholesale Line-Card.
-            </span>
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight leading-[1.1]">
+            Submit your Bill of Quantities.
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base mt-2 font-body leading-relaxed">
-            Submit your required product list or quantity breakdown. Our commercial supply desk provides direct volume rates and inventory availability within 24 hours.
+          <p className="text-sm sm:text-base font-body text-[#5C5852] mt-4 leading-relaxed">
+            Attach your BOQ spreadsheet, specification schedule, or item list. We consolidate product identification, direct pricing, and timeline estimates into a single formal response.
           </p>
-        </ScrollItemFade>
+        </div>
 
-        {/* =========================================================================
-            MAIN INQUIRY WIZARD CARD & SPECIALIST DESK SUITE
-            ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Main Multi-Step Wizard (8 Cols) */}
-          <div className="lg:col-span-8">
-            <ScrollItemFade className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-10 shadow-xl shadow-slate-900/5">
-            
-            {/* Step Indicators */}
-            {!submittedToken && (
-              <div className="flex items-center justify-between pb-6 mb-8 border-b border-slate-100 text-xs font-tech">
-                {[
-                  { step: 1, label: 'Categories' },
-                  { step: 2, label: 'Volume & Schedule' },
-                  { step: 3, label: 'Product List' },
-                  { step: 4, label: 'Business Details' },
-                ].map((s) => (
-                  <button
-                    key={s.step}
-                    type="button"
-                    onClick={() => setCurrentStep(s.step)}
-                    className={`flex items-center gap-2 transition-colors ${
-                      currentStep === s.step 
-                        ? 'text-accent-primary font-bold' 
-                        : currentStep > s.step 
-                        ? 'text-[#0F172A]' 
-                        : 'text-slate-400'
-                    }`}
-                  >
-                    <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-mono ${
-                      currentStep === s.step 
-                        ? 'bg-accent-primary text-white font-bold' 
-                        : currentStep > s.step 
-                        ? 'bg-accent-surface border border-accent-border text-accent-primary' 
-                        : 'bg-slate-100 border border-slate-200 text-slate-500'
-                    }`}>
-                      {currentStep > s.step ? '✓' : s.step}
-                    </span>
-                    <span className="hidden sm:inline">{s.label}</span>
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {/* SUBMISSION CONFIRMATION RECEIPT */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Main Form */}
+          <div className="lg:col-span-8 bg-white border border-[#E5E0D5] p-6 sm:p-10 shadow-xs">
             {submittedToken ? (
-              <div className="py-8 text-center space-y-6">
-                <div className="w-16 h-16 rounded-full border-2 border-accent-border bg-accent-surface text-accent-primary mx-auto flex items-center justify-center shadow-sm">
-                  <Check className="w-8 h-8 stroke-[3]" />
+              <div className="py-16 text-center">
+                <div className="w-12 h-12 border border-[#A8824C] text-[#A8824C] flex items-center justify-center mx-auto mb-4">
+                  <Check className="w-6 h-6" />
                 </div>
-
-                <div>
-                  <span className="text-xs font-tech text-accent-primary uppercase font-bold tracking-widest block mb-1">
-                    INQUIRY REGISTERED
-                  </span>
-                  <h3 className="text-2xl sm:text-3xl font-display font-bold text-[#0F172A] mb-2">
-                    Bulk Requirement Received Successfully
-                  </h3>
-                  <p className="text-sm font-body text-slate-600 max-w-md mx-auto">
-                    Your product requirement list has been routed to our Commercial Supply Desk. A dedicated B2B Account Manager will dispatch your volume quote within 24 hours.
-                  </p>
-                </div>
-
-                {/* Token Badge */}
-                <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-2xl border border-slate-200 bg-slate-50">
-                  <span className="text-xs font-tech text-slate-500">Inquiry Tracking Token:</span>
-                  <span className="text-base font-mono font-bold text-accent-primary tracking-wider">
-                    {submittedToken}
-                  </span>
-                </div>
-
-                {/* SLA Guarantee Banner */}
-                <div className="p-4 rounded-2xl border border-slate-200 bg-slate-50 max-w-lg mx-auto flex items-center justify-between text-xs font-tech text-slate-600">
-                  <span className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-accent-primary" />
-                    <span>Wholesale Pricing SLA:</span>
-                    <strong className="text-[#0F172A]">Guaranteed 24 Hours</strong>
-                  </span>
-                  <span className="text-emerald-600 font-bold">Direct OEM Invoicing</span>
-                </div>
-
-                <div className="pt-4">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSubmittedToken(null);
-                      setCurrentStep(1);
-                    }}
-                    className="px-6 py-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-tech text-slate-700 transition-colors shadow-xs"
-                  >
-                    Submit Another Product Requirement
-                  </button>
-                </div>
+                <h3 className="text-2xl font-display font-bold text-[#141413] mb-2">
+                  BOQ Dossier Received
+                </h3>
+                <p className="text-xs font-tech text-[#A8824C] font-semibold uppercase tracking-wider mb-3">
+                  Tracking Reference: {submittedToken}
+                </p>
+                <p className="text-sm font-body text-[#5C5852] max-w-md mx-auto">
+                  Our specification team has queued your requirement. A preliminary line-item feasibility and pricing schedule will be delivered to your inbox within 24 hours.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSubmittedToken(null);
+                    setUploadedFile(null);
+                  }}
+                  className="mt-8 px-6 py-2.5 bg-[#141413] text-[#FAF9F5] text-xs font-tech uppercase tracking-widest hover:bg-[#A8824C] transition-colors"
+                >
+                  Submit Another BOQ
+                </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                
-                {/* STEP 1: DIVISION SELECTION */}
-                {currentStep === 1 && (
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="text-base font-display font-bold text-[#0F172A] mb-1">
-                        Select Wholesale Product Categories
-                      </h4>
-                      <p className="text-xs font-body text-slate-600">
-                        Choose single or multiple product divisions for consolidated wholesale pricing.
-                      </p>
-                    </div>
-
-                    <div className="space-y-2.5">
-                      {DIVISIONS_OPTIONS.map((opt) => {
-                        const isSelected = selectedDivisions.includes(opt.id);
-                        return (
-                          <div
-                            key={opt.id}
-                            onClick={() => toggleDivision(opt.id)}
-                            className={`p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between ${
-                              isSelected
-                                ? 'border-accent-border bg-accent-surface/60 text-[#0F172A] shadow-xs'
-                                : 'border-slate-200 bg-slate-50/70 text-slate-700 hover:border-slate-300 hover:bg-white'
-                            }`}
-                          >
-                            <div className="flex items-center gap-3">
-                              <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${
-                                isSelected ? 'bg-accent-primary border-accent-primary text-white' : 'border-slate-300 bg-white'
-                              }`}>
-                                {isSelected && <Check className="w-3.5 h-3.5 stroke-[3]" />}
-                              </div>
-                              <span className="text-xs sm:text-sm font-display font-medium">
-                                {opt.label}
-                              </span>
-                            </div>
-                            <span className="text-[10px] font-tech text-slate-500 hidden sm:inline">
-                              {opt.code}
-                            </span>
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {/* 1. Category Selection */}
+                <div>
+                  <label className="block text-xs font-tech uppercase tracking-wider text-[#141413] font-semibold mb-3">
+                    01. Select Relevant Procurement Divisions
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {DIVISIONS_OPTIONS.map((item) => {
+                      const isSelected = selectedDivisions.includes(item.id);
+                      return (
+                        <div
+                          key={item.id}
+                          onClick={() => toggleDivision(item.id)}
+                          className={`p-3.5 border cursor-pointer transition-all flex items-center justify-between ${
+                            isSelected
+                              ? 'border-[#141413] bg-[#F3EFE6] text-[#141413]'
+                              : 'border-[#E5E0D5] bg-[#FAF9F5] text-[#5C5852] hover:border-[#141413]'
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <span className="text-[10px] font-tech text-[#8E8981]">{item.code}</span>
+                            <span className="text-xs font-body font-medium">{item.label}</span>
                           </div>
-                        );
-                      })}
-                    </div>
-
-                    <div className="pt-4 flex justify-end">
-                      <button
-                        type="button"
-                        onClick={() => setCurrentStep(2)}
-                        className="px-6 py-3 rounded-xl font-bold text-xs font-tech text-white flex items-center gap-2 shadow-xs transition-transform active:scale-95 uppercase tracking-wider"
-                        style={{ backgroundColor: 'var(--accent-primary)' }}
-                      >
-                        <span>Next: Volume & Schedule</span>
-                        <span>→</span>
-                      </button>
-                    </div>
+                          {isSelected && <span className="w-2 h-2 bg-[#141413]" />}
+                        </div>
+                      );
+                    })}
                   </div>
-                )}
+                </div>
 
-                {/* STEP 2: TIMELINE & PROCUREMENT SCALE */}
-                {currentStep === 2 && (
-                  <div className="space-y-6">
-                    <div>
-                      <h4 className="text-base font-display font-bold text-[#0F172A] mb-1">
-                        Estimated Purchase Volume & Dispatch Schedule
-                      </h4>
-                      <p className="text-xs font-body text-slate-600">
-                        Enables our supply desks to apply the maximum tiered volume discount to your order.
-                      </p>
-                    </div>
-
-                    {/* Timeline Selector */}
-                    <div>
-                      <span className="text-[11px] font-tech uppercase tracking-widest text-slate-500 block mb-2.5 font-semibold">
-                        Target Delivery Schedule
-                      </span>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        {TIMELINE_OPTIONS.map((t) => {
-                          const isSelected = selectedTimeline === t.id;
-                          return (
-                            <button
-                              key={t.id}
-                              type="button"
-                              onClick={() => setSelectedTimeline(t.id)}
-                              className={`p-3.5 rounded-2xl border text-left transition-all ${
-                                isSelected
-                                  ? 'border-accent-border bg-accent-surface text-[#0F172A] shadow-xs'
-                                  : 'border-slate-200 bg-slate-50/70 text-slate-700 hover:border-slate-300 hover:bg-white'
-                              }`}
-                            >
-                              <span className="text-xs font-display font-bold block">{t.label}</span>
-                              <span className="text-[10px] font-tech text-accent-primary font-semibold">{t.sub}</span>
-                            </button>
-                          );
-                        })}
+                {/* 2. Drag & Drop BOQ File Zone */}
+                <div>
+                  <label className="block text-xs font-tech uppercase tracking-wider text-[#141413] font-semibold mb-3">
+                    02. Upload BOQ, Specification Sheet or Tender File
+                  </label>
+                  <div
+                    onDragOver={(e) => e.preventDefault()}
+                    onDrop={handleFileDrop}
+                    className={`border-2 border-dashed p-8 text-center transition-all ${
+                      uploadedFile
+                        ? 'border-[#141413] bg-[#F3EFE6]'
+                        : 'border-[#D8D2C5] bg-[#FAF9F5] hover:border-[#141413]'
+                    }`}
+                  >
+                    {uploadedFile ? (
+                      <div className="flex flex-col items-center">
+                        <FileCheck2 className="w-8 h-8 text-[#A8824C] mb-2" />
+                        <span className="text-sm font-display font-semibold text-[#141413]">{uploadedFile.name}</span>
+                        <span className="text-xs font-tech text-[#8E8981] mt-1">{uploadedFile.size} • Attached</span>
+                        <button
+                          type="button"
+                          onClick={() => setUploadedFile(null)}
+                          className="mt-3 text-xs font-tech text-[#A8824C] hover:underline"
+                        >
+                          Remove file
+                        </button>
                       </div>
-                    </div>
-
-                    {/* Volume Scale */}
-                    <div>
-                      <span className="text-[11px] font-tech uppercase tracking-widest text-slate-500 block mb-2.5 font-semibold">
-                        Estimated Order Volume
-                      </span>
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                        {VOLUME_OPTIONS.map((v) => {
-                          const isSelected = selectedVolume === v.id;
-                          return (
-                            <button
-                              key={v.id}
-                              type="button"
-                              onClick={() => setSelectedVolume(v.id)}
-                              className={`p-3 rounded-xl border text-left transition-all ${
-                                isSelected
-                                  ? 'border-accent-border bg-accent-surface text-[#0F172A] shadow-xs'
-                                  : 'border-slate-200 bg-slate-50/70 text-slate-700 hover:border-slate-300 hover:bg-white'
-                              }`}
-                            >
-                              <span className="text-xs font-display font-bold block">{v.label}</span>
-                              <span className="text-[9.5px] font-tech text-slate-500 block truncate">{v.sub}</span>
-                            </button>
-                          );
-                        })}
+                    ) : (
+                      <div>
+                        <UploadCloud className="w-8 h-8 text-[#8E8981] mx-auto mb-3" />
+                        <p className="text-xs sm:text-sm font-body text-[#141413] font-medium">
+                          Drag and drop your Excel / CSV / PDF document here
+                        </p>
+                        <p className="text-[11px] font-tech text-[#8E8981] mt-1">
+                          Supports .xlsx, .xls, .pdf, .csv up to 50MB
+                        </p>
+                        <label className="mt-4 inline-block px-4 py-2 bg-white border border-[#E5E0D5] text-xs font-tech text-[#141413] hover:border-[#141413] cursor-pointer transition-colors">
+                          Browse Local Files
+                          <input
+                            type="file"
+                            className="hidden"
+                            accept=".xlsx,.xls,.csv,.pdf,.doc,.docx"
+                            onChange={handleFileInput}
+                          />
+                        </label>
                       </div>
-                    </div>
-
-                    <div className="pt-4 flex items-center justify-between">
-                      <button
-                        type="button"
-                        onClick={() => setCurrentStep(1)}
-                        className="px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-tech text-slate-700 hover:bg-slate-50 shadow-xs"
-                      >
-                        ← Back
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setCurrentStep(3)}
-                        className="px-6 py-3 rounded-xl font-bold text-xs font-tech text-white flex items-center gap-2 shadow-xs transition-transform active:scale-95 uppercase tracking-wider"
-                        style={{ backgroundColor: 'var(--accent-primary)' }}
-                      >
-                        <span>Next: Attach Product List</span>
-                        <span>→</span>
-                      </button>
-                    </div>
+                    )}
                   </div>
-                )}
+                </div>
 
-                {/* STEP 3: DIRECT PRODUCT LIST DROP */}
-                {currentStep === 3 && (
-                  <div className="space-y-5">
-                    <div>
-                      <h4 className="text-base font-display font-bold text-[#0F172A] mb-1">
-                        Upload Product List, Bill of Materials, or Item Codes
-                      </h4>
-                      <p className="text-xs font-body text-slate-600">
-                        Supports .xlsx, .pdf, .csv, .dwg, and .zip files up to 50MB.
-                      </p>
-                    </div>
+                {/* 3. Requirement Notes */}
+                <div>
+                  <label className="block text-xs font-tech uppercase tracking-wider text-[#141413] font-semibold mb-2">
+                    03. Notes / Specific Brands / Target Deadlines
+                  </label>
+                  <textarea
+                    rows={3}
+                    placeholder="Provide additional details regarding brand specifications, handover milestones, or logistics delivery location..."
+                    value={requirementNotes}
+                    onChange={(e) => setRequirementNotes(e.target.value)}
+                    className="w-full p-3.5 bg-[#FAF9F5] border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413]"
+                  />
+                </div>
 
-                    {/* Drag & Drop Box */}
-                    <div
-                      onDragOver={(e) => e.preventDefault()}
-                      onDrop={handleFileDrop}
-                      className={`relative p-8 rounded-3xl border-2 border-dashed transition-all flex flex-col items-center justify-center text-center cursor-pointer ${
-                        uploadedFile
-                          ? 'border-emerald-500 bg-emerald-50'
-                          : 'border-slate-300 bg-slate-50/60 hover:border-accent-border hover:bg-white'
-                      }`}
-                    >
+                {/* 4. Contact Details */}
+                <div>
+                  <label className="block text-xs font-tech uppercase tracking-wider text-[#141413] font-semibold mb-3">
+                    04. Enterprise Contact Information
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="relative">
+                      <User className="absolute left-3 top-3 w-4 h-4 text-[#8E8981]" />
                       <input
-                        type="file"
-                        onChange={handleFileInput}
-                        className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
-                        accept=".pdf,.xlsx,.xls,.csv,.dwg,.zip"
-                      />
-
-                      {uploadedFile ? (
-                        <div className="space-y-2">
-                          <div className="p-3 rounded-full bg-emerald-100 text-emerald-700 w-fit mx-auto">
-                            <FileCheck2 className="w-6 h-6" />
-                          </div>
-                          <span className="text-sm font-display font-bold text-[#0F172A] block">
-                            {uploadedFile.name}
-                          </span>
-                          <span className="text-xs font-tech text-emerald-700 block font-semibold">
-                            {uploadedFile.size} • Verified For Direct Quotation
-                          </span>
-                          <span className="text-[10px] font-tech text-slate-500 underline block">
-                            Click to replace file
-                          </span>
-                        </div>
-                      ) : (
-                        <div className="space-y-2">
-                          <div className="p-3 rounded-full bg-white border border-slate-200 text-accent-primary w-fit mx-auto shadow-xs">
-                            <UploadCloud className="w-6 h-6" />
-                          </div>
-                          <span className="text-sm font-display font-bold text-[#0F172A] block">
-                            Drag & Drop Requirement List or <span className="text-accent-primary underline">Browse</span>
-                          </span>
-                          <span className="text-[11px] font-tech text-slate-500 block">
-                            XLSX • PDF • CSV • DWG • ZIP (Up to 50 MB)
-                          </span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Optional Brand Notes */}
-                    <div>
-                      <label className="text-[11px] font-tech uppercase tracking-widest text-slate-600 block mb-1.5 font-semibold">
-                        Brand Model Numbers / Quantity Breakdown (Optional)
-                      </label>
-                      <textarea
-                        value={requirementNotes}
-                        onChange={(e) => setRequirementNotes(e.target.value)}
-                        placeholder="e.g. Need Grohe concealed cisterns (150 units), Kohler touchless faucets (80 units), 400TC linen sets..."
-                        rows={3}
-                        className="w-full p-3 rounded-2xl border border-slate-200 bg-slate-50 text-xs font-body text-slate-900 placeholder-slate-400 focus:outline-none focus:border-accent-primary focus:bg-white transition-colors"
+                        type="text"
+                        required
+                        placeholder="Full Name *"
+                        value={contactForm.fullName}
+                        onChange={(e) => setContactForm({ ...contactForm, fullName: e.target.value })}
+                        className="w-full pl-9 pr-3 py-2.5 bg-[#FAF9F5] border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413]"
                       />
                     </div>
-
-                    <div className="pt-4 flex items-center justify-between">
-                      <button
-                        type="button"
-                        onClick={() => setCurrentStep(2)}
-                        className="px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-tech text-slate-700 hover:bg-slate-50 shadow-xs"
-                      >
-                        ← Back
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setCurrentStep(4)}
-                        className="px-6 py-3 rounded-xl font-bold text-xs font-tech text-white flex items-center gap-2 shadow-xs transition-transform active:scale-95 uppercase tracking-wider"
-                        style={{ backgroundColor: 'var(--accent-primary)' }}
-                      >
-                        <span>Next: Business Contact Details</span>
-                        <span>→</span>
-                      </button>
+                    <div className="relative">
+                      <Building className="absolute left-3 top-3 w-4 h-4 text-[#8E8981]" />
+                      <input
+                        type="text"
+                        required
+                        placeholder="Company / Architecture Firm *"
+                        value={contactForm.companyName}
+                        onChange={(e) => setContactForm({ ...contactForm, companyName: e.target.value })}
+                        className="w-full pl-9 pr-3 py-2.5 bg-[#FAF9F5] border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413]"
+                      />
+                    </div>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-3 w-4 h-4 text-[#8E8981]" />
+                      <input
+                        type="email"
+                        required
+                        placeholder="Official Work Email *"
+                        value={contactForm.workEmail}
+                        onChange={(e) => setContactForm({ ...contactForm, workEmail: e.target.value })}
+                        className="w-full pl-9 pr-3 py-2.5 bg-[#FAF9F5] border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413]"
+                      />
+                    </div>
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-3 w-4 h-4 text-[#8E8981]" />
+                      <input
+                        type="tel"
+                        required
+                        placeholder="Phone / WhatsApp Number *"
+                        value={contactForm.phoneWhatsApp}
+                        onChange={(e) => setContactForm({ ...contactForm, phoneWhatsApp: e.target.value })}
+                        className="w-full pl-9 pr-3 py-2.5 bg-[#FAF9F5] border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413]"
+                      />
                     </div>
                   </div>
-                )}
+                </div>
 
-                {/* STEP 4: ENTERPRISE VERIFICATION & CREDENTIALS */}
-                {currentStep === 4 && (
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="text-base font-display font-bold text-[#0F172A] mb-1">
-                        Business Verification & Contact Details
-                      </h4>
-                      <p className="text-xs font-body text-slate-600">
-                        Official wholesale quotation packages and price schedules are sent directly to your business inbox.
-                      </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs font-tech">
-                      <div>
-                        <label className="text-slate-600 block mb-1 font-medium">Full Name *</label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="e.g. David Vance"
-                          value={contactForm.fullName}
-                          onChange={(e) => setContactForm({ ...contactForm, fullName: e.target.value })}
-                          className="w-full p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:border-accent-primary focus:bg-white focus:outline-none"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="text-slate-600 block mb-1 font-medium">Work / Corporate Email *</label>
-                        <input
-                          type="email"
-                          required
-                          placeholder="e.g. d.vance@turner-construction.com"
-                          value={contactForm.workEmail}
-                          onChange={(e) => setContactForm({ ...contactForm, workEmail: e.target.value })}
-                          className="w-full p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:border-accent-primary focus:bg-white focus:outline-none"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="text-slate-600 block mb-1 font-medium">Company / Developer Firm *</label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="e.g. Turner Construction / Marriott"
-                          value={contactForm.companyName}
-                          onChange={(e) => setContactForm({ ...contactForm, companyName: e.target.value })}
-                          className="w-full p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:border-accent-primary focus:bg-white focus:outline-none"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="text-slate-600 block mb-1 font-medium">Your Role / Designation</label>
-                        <input
-                          type="text"
-                          placeholder="e.g. Lead MEP Engineer / Procurement CPO"
-                          value={contactForm.roleTitle}
-                          onChange={(e) => setContactForm({ ...contactForm, roleTitle: e.target.value })}
-                          className="w-full p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:border-accent-primary focus:bg-white focus:outline-none"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="text-slate-600 block mb-1 font-medium">Project Delivery City / State</label>
-                        <input
-                          type="text"
-                          placeholder="e.g. Dubai / London / Singapore"
-                          value={contactForm.deliveryLocation}
-                          onChange={(e) => setContactForm({ ...contactForm, deliveryLocation: e.target.value })}
-                          className="w-full p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:border-accent-primary focus:bg-white focus:outline-none"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="text-slate-600 block mb-1 font-medium">Phone / WhatsApp *</label>
-                        <input
-                          type="tel"
-                          required
-                          placeholder="e.g. +1 (555) 019-2834"
-                          value={contactForm.phoneWhatsApp}
-                          onChange={(e) => setContactForm({ ...contactForm, phoneWhatsApp: e.target.value })}
-                          className="w-full p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:border-accent-primary focus:bg-white focus:outline-none"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Trust Assurance Badge */}
-                    <div className="p-3 rounded-xl border border-slate-200 bg-slate-50 flex items-center gap-2.5 text-[11px] font-tech text-slate-600">
-                      <Lock className="w-4 h-4 text-accent-primary shrink-0" />
-                      <span>Direct Institutional Pricing Guaranteed • OEM Authenticity Verified • Dedicated B2B Account Manager Assigned</span>
-                    </div>
-
-                    <div className="pt-4 flex items-center justify-between">
-                      <button
-                        type="button"
-                        onClick={() => setCurrentStep(3)}
-                        className="px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-tech text-slate-700 hover:bg-slate-50 shadow-xs"
-                      >
-                        ← Back
-                      </button>
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="px-8 py-3.5 rounded-xl font-bold text-xs font-tech text-white flex items-center gap-2 shadow-sm transition-transform active:scale-95 uppercase tracking-wider hover:brightness-110"
-                        style={{ backgroundColor: 'var(--accent-primary)' }}
-                      >
-                        <Send className="w-4 h-4 text-white" />
-                        <span>{isSubmitting ? 'Registering Requirement...' : 'Get Direct Volume Pricing (24h SLA)'}</span>
-                      </button>
-                    </div>
+                {/* Submit Action */}
+                <div className="pt-4 border-t border-[#E5E0D5] flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="flex items-center gap-2 text-[11px] font-tech text-[#5C5852]">
+                    <ShieldCheck className="w-4 h-4 text-[#A8824C]" />
+                    <span>Direct OEM Margin Pass-Through & 24h Turnaround</span>
                   </div>
-                )}
 
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto py-3.5 px-8 bg-[#141413] text-[#FAF9F5] text-xs font-tech font-bold tracking-widest uppercase hover:bg-[#A8824C] transition-all flex items-center justify-center gap-2"
+                  >
+                    <Send className="w-3.5 h-3.5" />
+                    <span>{isSubmitting ? 'Processing Dossier...' : 'Submit BOQ for Evaluation'}</span>
+                  </button>
+                </div>
               </form>
             )}
-
-            </ScrollItemFade>
           </div>
 
-          {/* Enterprise Procurement Assurances & Guarantees (4 Cols) with Scroll Fade */}
-          <div className="lg:col-span-4">
-            <ScrollItemFade className="space-y-4">
-              
-              {/* Enterprise Supply Guarantees Card */}
-              <div className="p-6 rounded-3xl border border-slate-200 bg-white space-y-3.5 shadow-xl shadow-slate-900/5">
-                <div className="flex items-center gap-2 pb-2 border-b border-slate-100 text-xs font-tech text-[#0F172A] font-bold">
-                  <ShieldCheck className="w-4 h-4 text-accent-primary" />
-                  <span>Enterprise Institutional Assurances</span>
-                </div>
+          {/* Right Info Track */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="p-6 bg-[#F3EFE6] border border-[#E5E0D5]">
+              <h3 className="text-base font-display font-bold text-[#141413] mb-3">
+                Consolidated Procurement Service
+              </h3>
+              <p className="text-xs font-body text-[#5C5852] leading-relaxed mb-6">
+                Replace fragmented vendor negotiations with a single contractual partner. We align factory production lines directly to your project&apos;s installation timeline.
+              </p>
 
-                <div className="space-y-2.5">
-                  {PROCUREMENT_ASSURANCES.map((assure) => {
-                    const Icon = assure.icon;
-                    return (
-                      <div
-                        key={assure.title}
-                        className="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 hover:bg-white transition-colors flex items-start gap-3"
-                      >
-                        <div className="p-2 rounded-xl border border-accent-border bg-accent-surface text-accent-primary shrink-0 shadow-xs mt-0.5">
-                          <Icon className="w-3.5 h-3.5" />
-                        </div>
-                        <div className="min-w-0">
-                          <h4 className="text-xs font-display font-bold text-[#0F172A] mb-0.5">
-                            {assure.title}
-                          </h4>
-                          <p className="text-[10.5px] font-body text-slate-600 leading-relaxed">
-                            {assure.desc}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
+              <div className="space-y-4 text-xs font-tech border-t border-[#E5E0D5] pt-4">
+                <div className="flex items-start gap-2.5">
+                  <Boxes className="w-4 h-4 text-[#A8824C] shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-[#141413] block">Multi-Brand Consolidations</strong>
+                    <span className="text-[#5C5852]">Unified billing and single palletized dispatch.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <FileText className="w-4 h-4 text-[#A8824C] shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-[#141413] block">Architectural Submittals</strong>
+                    <span className="text-[#5C5852]">EN/ASTM compliance test reports & BIM data.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Globe2 className="w-4 h-4 text-[#A8824C] shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-[#141413] block">Bonded Warehousing</strong>
+                    <span className="text-[#5C5852]">60-day buffer storage before on-site installation.</span>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* Direct Manufacturer Warranty Guarantee */}
-              <div className="p-4 rounded-2xl border border-slate-200 bg-slate-50/80 space-y-1.5 text-xs font-tech text-slate-600">
-                <div className="flex items-center gap-2 text-[#0F172A] font-bold">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>100% Genuine OEM Factory Submittals</span>
-                </div>
-                <p className="text-[10.5px] leading-relaxed text-slate-500">
-                  Every order includes authenticated factory test submittals, full CAD/BIM Revit dossiers, and direct manufacturer warranty coverage.
-                </p>
+            <div className="p-6 bg-white border border-[#E5E0D5]">
+              <div className="text-[10px] font-tech text-[#8E8981] uppercase tracking-wider mb-1">
+                Direct Contact
               </div>
-
-            </ScrollItemFade>
+              <div className="text-sm font-display font-bold text-[#141413]">
+                Commercial Sourcing Team
+              </div>
+              <p className="text-xs font-body text-[#5C5852] mt-2 leading-relaxed">
+                Need immediate phone consultation for an urgent tender? Reach our senior procurement desk directly.
+              </p>
+              <div className="mt-4 pt-4 border-t border-[#E5E0D5] flex items-center justify-between text-xs font-tech">
+                <span className="text-[#5C5852]">WhatsApp Active:</span>
+                <a 
+                  href="https://wa.me/?text=Hello%20Vertex%20Commercial%20Desk" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="font-bold text-[#A8824C] hover:underline"
+                >
+                  +1 (800) VERTEX-B2B
+                </a>
+              </div>
+            </div>
           </div>
-
         </div>
 
       </div>

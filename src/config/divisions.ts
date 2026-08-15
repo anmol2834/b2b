@@ -355,3 +355,24 @@ export const DIVISIONS: Record<string, DivisionData> = {
     ],
   },
 };
+
+export function getProductById(id: string): (ProductSpecItem & { division: DivisionData }) | null {
+  for (const div of Object.values(DIVISIONS)) {
+    const found = div.products.find((p) => p.id === id || p.code.toLowerCase() === id.toLowerCase());
+    if (found) {
+      return { ...found, division: div };
+    }
+  }
+  return null;
+}
+
+export function getAllProducts(): (ProductSpecItem & { division: DivisionData })[] {
+  const list: (ProductSpecItem & { division: DivisionData })[] = [];
+  for (const div of Object.values(DIVISIONS)) {
+    for (const prod of div.products) {
+      list.push({ ...prod, division: div });
+    }
+  }
+  return list;
+}
+

@@ -1,23 +1,23 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans, JetBrains_Mono, Syne } from 'next/font/google';
+import { Manrope, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ScrollProvider } from '@/components/core/ScrollProvider';
 import { ThemeProvider } from '@/components/core/ThemeProvider';
 import { DeviceGuard } from '@/components/core/DeviceGuard';
 import { MotionProvider } from '@/components/core/MotionProvider';
 
-const fontDisplay = Syne({
+const fontDisplay = Manrope({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
-  weight: ['600', '700', '800'],
+  weight: ['400', '500', '600', '700', '800'],
 });
 
-const fontBody = Plus_Jakarta_Sans({
+const fontBody = Inter({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
-  weight: ['400', '500', '600'],
+  weight: ['300', '400', '500', '600', '700'],
 });
 
 const fontTech = JetBrains_Mono({
@@ -28,8 +28,9 @@ const fontTech = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Enterprise Sourcing & Specification Engine',
-  description: 'Single-Window Partner for Commercial, Hospitality & Industrial Solutions.',
+  title: 'VERTEX | Architecture, Commercial & Industrial Procurement Partner',
+  description:
+    'One professional partner for products across hospitality, commercial, architectural, construction and industrial projects.',
 };
 
 export default function RootLayout({
@@ -40,11 +41,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="titanium-dark"
       className={`${fontDisplay.variable} ${fontBody.variable} ${fontTech.variable}`}
       suppressHydrationWarning
     >
-      <body className="bg-canvas text-content-primary antialiased selection:bg-accent-gold selection:text-black">
+      <body className="bg-[#FAF9F5] text-[#141413] antialiased selection:bg-[#B3884D] selection:text-white">
         <DeviceGuard>
           <MotionProvider>
             <ThemeProvider>

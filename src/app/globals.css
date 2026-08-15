@@ -1,147 +1,130 @@
 @import "tailwindcss";
 
-@config "../../tailwind.config.ts";
-
 /* ==========================================================================
-   MULTI-PALETTE ACCENT TOKENS (PREMIUM LIGHT THEME ENTERPRISE ARCHITECTURE)
+   WARM IVORY / ARCHITECTURAL STONE THEME TOKENS
    ========================================================================== */
 
-/* 1. ENTERPRISE LIGHT / MODERN BLUE (DEFAULT 100% LIGHT THEME) */
+@theme {
+  --font-display: var(--font-display), sans-serif;
+  --font-body: var(--font-body), sans-serif;
+  --font-tech: var(--font-tech), monospace;
+
+  --color-canvas: var(--bg-primary);
+  --color-stone-light: var(--bg-secondary);
+  --color-stone-mid: var(--bg-stone);
+  --color-accent: var(--accent-primary);
+}
+
 :root,
+[data-theme="titanium-dark"],
 [data-theme="enterprise-light"] {
-  --accent-primary: #0284C7;
-  --accent-secondary: #0D9488;
-  --accent-tertiary: #0369A1;
-  --accent-surface: rgba(2, 132, 199, 0.08);
-  --accent-border: rgba(2, 132, 199, 0.25);
-  --accent-border-hover: rgba(2, 132, 199, 0.65);
-  --glow-color: rgba(2, 132, 199, 0.15);
-  --pattern-color: rgba(15, 23, 42, 0.04);
+  --bg-primary: #FAF9F5;
+  --bg-secondary: #F3EFE6;
+  --bg-stone: #EBE6DC;
+  --bg-stone-dark: #22201D;
+  --text-primary: #141413;
+  --text-secondary: #5C5852;
+  --text-muted: #8E8981;
+  --border-light: #E5E0D5;
+  --border-subtle: #D8D2C5;
+  --accent-primary: #A8824C;
+  --accent-hover: #946E38;
+  --accent-surface: rgba(168, 130, 76, 0.08);
+  --accent-border: rgba(168, 130, 76, 0.3);
+  --accent-border-hover: rgba(168, 130, 76, 0.7);
+  --glow-color: rgba(168, 130, 76, 0.12);
 }
 
-/* 2. TITANIUM GOLD LIGHT */
-[data-theme="titanium-dark"] {
-  --accent-primary: #B48C1C;
-  --accent-secondary: #0284C7;
-  --accent-tertiary: #D97706;
-  --accent-surface: rgba(180, 140, 28, 0.08);
-  --accent-border: rgba(180, 140, 28, 0.25);
-  --accent-border-hover: rgba(180, 140, 28, 0.65);
-  --glow-color: rgba(180, 140, 28, 0.15);
-  --pattern-color: rgba(15, 23, 42, 0.04);
-}
-
-/* 3. EMERALD FOREST */
 [data-theme="emerald-forest"] {
-  --accent-primary: #059669;
-  --accent-secondary: #10B981;
-  --accent-tertiary: #047857;
-  --accent-surface: rgba(5, 150, 105, 0.08);
-  --accent-border: rgba(5, 150, 105, 0.25);
-  --accent-border-hover: rgba(5, 150, 105, 0.65);
-  --glow-color: rgba(5, 150, 105, 0.15);
-  --pattern-color: rgba(15, 23, 42, 0.04);
+  --accent-primary: #2D5A43;
+  --accent-hover: #224533;
+  --accent-surface: rgba(45, 90, 67, 0.08);
+  --accent-border: rgba(45, 90, 67, 0.3);
 }
 
-/* 4. SUNSET OCHRE */
 [data-theme="sunset-ochre"] {
-  --accent-primary: #D97706;
-  --accent-secondary: #EA580C;
-  --accent-tertiary: #B45309;
-  --accent-surface: rgba(217, 119, 6, 0.08);
-  --accent-border: rgba(217, 119, 6, 0.25);
-  --accent-border-hover: rgba(217, 119, 6, 0.65);
-  --glow-color: rgba(217, 119, 6, 0.15);
-  --pattern-color: rgba(15, 23, 42, 0.04);
+  --accent-primary: #B85D19;
+  --accent-hover: #9E4F14;
+  --accent-surface: rgba(184, 93, 25, 0.08);
+  --accent-border: rgba(184, 93, 25, 0.3);
 }
 
-/* 5. CYBER INDUSTRIAL */
 [data-theme="cyber-industrial"] {
-  --accent-primary: #4F46E5;
-  --accent-secondary: #DC2626;
-  --accent-tertiary: #7C3AED;
-  --accent-surface: rgba(79, 70, 229, 0.08);
-  --accent-border: rgba(79, 70, 229, 0.25);
-  --accent-border-hover: rgba(79, 70, 229, 0.65);
-  --glow-color: rgba(79, 70, 229, 0.15);
-  --pattern-color: rgba(15, 23, 42, 0.04);
+  --accent-primary: #2B3A42;
+  --accent-hover: #1E282E;
+  --accent-surface: rgba(43, 58, 66, 0.08);
+  --accent-border: rgba(43, 58, 66, 0.3);
 }
 
 /* ==========================================================================
-   ARCHITECTURAL GRID PATTERNS & MICRO TEXTURES (ISOLATED & ZERO-PAINT)
+   ARCHITECTURAL BASELINE & SUBTLE TEXTURES
    ========================================================================== */
-.arch-grid-dark,
-.arch-grid-light {
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body), sans-serif;
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: -0.025em;
+}
+
+/* Hairline micro-borders */
+.border-hairline {
+  border: 1px solid var(--border-light);
+}
+
+.border-hairline-b {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.border-hairline-t {
+  border-top: 1px solid var(--border-light);
+}
+
+.border-hairline-r {
+  border-right: 1px solid var(--border-light);
+}
+
+.border-hairline-l {
+  border-left: 1px solid var(--border-light);
+}
+
+/* Subtle architectural grid pattern */
+.arch-grid-subtle {
   background-image: 
-    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(to right, rgba(20, 20, 19, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 20, 19, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
 
-/* ==========================================================================
-   ENTERPRISE 60/120 FPS HARDWARE COMPOSITOR PRIMITIVES
-   ========================================================================== */
-.gpu-layer,
-.gpu-accelerated {
+/* Hardware Compositor Optimizations */
+.gpu-layer {
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
   will-change: transform;
 }
 
-.b2b-card-hover {
-  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 200ms ease, 
-              box-shadow 200ms ease;
-  will-change: transform;
+/* Editorial interactive states */
+.editorial-hover {
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.b2b-card-hover:hover {
-  transform: translateY(-4px);
+.editorial-hover:hover {
+  border-color: var(--border-subtle);
+  background-color: #FFFFFF;
 }
 
-/* Section rendering isolation for ultra-low scroll CPU cost */
-.perf-section-cv {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 800px;
-}
-
-/* Import Lenis Baseline Rules (Zero-Jank configuration) */
+/* Lenis smooth scrolling rules */
 html.lenis, html.lenis body {
   height: auto;
   scroll-behavior: auto !important;
-}
-
-/* ==========================================================================
-   INFINITE HARDWARE MARQUEE RAILS (COMPOSITOR ISOLATED)
-   ========================================================================== */
-@keyframes marquee-left {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
-}
-
-@keyframes marquee-right {
-  0% { transform: translate3d(-50%, 0, 0); }
-  100% { transform: translate3d(0, 0, 0); }
-}
-
-.animate-marquee-left {
-  display: flex;
-  width: max-content;
-  animation: marquee-left 32s linear infinite;
-  will-change: transform;
-}
-
-.animate-marquee-right {
-  display: flex;
-  width: max-content;
-  animation: marquee-right 32s linear infinite;
-  will-change: transform;
-}
-
-.pause-on-hover:hover .animate-marquee-left,
-.pause-on-hover:hover .animate-marquee-right {
-  animation-play-state: paused;
 }
 
 .lenis.lenis-smooth {
@@ -156,13 +139,33 @@ html.lenis, html.lenis body {
   overflow: hidden;
 }
 
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
+/* Marquee Rails */
+@keyframes marquee-left {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
-/* ==========================================================================
-   ACCESSIBILITY (PREFERS-REDUCED-MOTION) & MOBILE HARDENING
-   ========================================================================== */
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 40s linear infinite;
+  will-change: transform;
+}
+
+.pause-on-hover:hover .animate-marquee-left {
+  animation-play-state: paused;
+}
+
+/* Typography styles */
+.tracking-widest-editorial {
+  letter-spacing: 0.18em;
+}
+
+.tracking-wider-editorial {
+  letter-spacing: 0.10em;
+}
+
+/* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -172,32 +175,4 @@ html.lenis, html.lenis body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-
-  .animate-marquee-left,
-  .animate-marquee-right {
-    animation: none !important;
-    transform: none !important;
-  }
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .b2b-card-hover:hover {
-    transform: none !important;
-  }
-}
-
-/* Specific Interactive Transitions (NEVER universal * selector) */
-a, button, [role="button"], input, select, textarea {
-  transition-property: color, background-color, border-color, opacity, box-shadow, transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-body {
-  background-color: #F8FAFC;
-  color: #0F172A;
-  font-family: var(--font-body), sans-serif;
-  overflow-x: hidden;
-  text-rendering: optimizeSpeed;
-  -webkit-font-smoothing: antialiased;
 }
