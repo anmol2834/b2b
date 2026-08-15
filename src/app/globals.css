@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+@config "../../tailwind.config.ts";
+
+/* ==========================================================================
+   MULTI-PALETTE ACCENT TOKENS (DUAL-TONE #111 & #FFF ARCHITECTURE)
+   ========================================================================== */
+
+/* 1. TITANIUM OBSIDIAN (DEFAULT DARK LUXURY ARCHITECTURAL) */
+:root,
+[data-theme="titanium-dark"] {
+  --accent-primary: #D4AF37;
+  --accent-secondary: #00E5FF;
+  --accent-tertiary: #F59E0B;
+  --accent-surface: rgba(212, 175, 55, 0.08);
+  --accent-border: rgba(212, 175, 55, 0.25);
+  --accent-border-hover: rgba(212, 175, 55, 0.7);
+  --glow-color: rgba(212, 175, 55, 0.2);
+  --pattern-color: rgba(212, 175, 55, 0.07);
+}
+
+/* 2. ENTERPRISE LIGHT / MODERN BLUE */
+[data-theme="enterprise-light"] {
+  --accent-primary: #0284C7;
+  --accent-secondary: #38BDF8;
+  --accent-tertiary: #0369A1;
+  --accent-surface: rgba(2, 132, 199, 0.08);
+  --accent-border: rgba(2, 132, 199, 0.25);
+  --accent-border-hover: rgba(2, 132, 199, 0.7);
+  --glow-color: rgba(2, 132, 199, 0.2);
+  --pattern-color: rgba(2, 132, 199, 0.07);
+}
+
+/* 3. EMERALD FOREST (ECO & SUSTAINABLE PROCUREMENT) */
+[data-theme="emerald-forest"] {
+  --accent-primary: #57EF40;
+  --accent-secondary: #65C556;
+  --accent-tertiary: #689E5F;
+  --accent-surface: rgba(87, 239, 64, 0.08);
+  --accent-border: rgba(87, 239, 64, 0.25);
+  --accent-border-hover: rgba(87, 239, 64, 0.7);
+  --glow-color: rgba(87, 239, 64, 0.2);
+  --pattern-color: rgba(87, 239, 64, 0.07);
+}
+
+/* 4. SUNSET OCHRE (HOSPITALITY LUXURY WARMTH) */
+[data-theme="sunset-ochre"] {
+  --accent-primary: #FABF52;
+  --accent-secondary: #FA8952;
+  --accent-tertiary: #FAA652;
+  --accent-surface: rgba(250, 191, 82, 0.08);
+  --accent-border: rgba(250, 191, 82, 0.25);
+  --accent-border-hover: rgba(250, 191, 82, 0.7);
+  --glow-color: rgba(250, 191, 82, 0.2);
+  --pattern-color: rgba(250, 191, 82, 0.07);
+}
+
+/* 5. CYBER INDUSTRIAL (HIGH-CONTRAST ROBOTICS & AUTOMATION) */
+[data-theme="cyber-industrial"] {
+  --accent-primary: #2514EB;
+  --accent-secondary: #F02C10;
+  --accent-tertiary: #C135EB;
+  --accent-surface: rgba(37, 20, 235, 0.08);
+  --accent-border: rgba(37, 20, 235, 0.25);
+  --accent-border-hover: rgba(37, 20, 235, 0.7);
+  --glow-color: rgba(37, 20, 235, 0.25);
+  --pattern-color: rgba(37, 20, 235, 0.07);
+}
+
+/* ==========================================================================
+   ARCHITECTURAL GRID PATTERNS & MICRO TEXTURES (ISOLATED & ZERO-PAINT)
+   ========================================================================== */
+.arch-grid-dark {
+  background-image: 
+    linear-gradient(to right, var(--pattern-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--pattern-color) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.arch-grid-light {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ==========================================================================
+   ENTERPRISE 60/120 FPS HARDWARE COMPOSITOR PRIMITIVES
+   ========================================================================== */
+.gpu-layer,
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.b2b-card-hover {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 200ms ease, 
+              box-shadow 200ms ease;
+  will-change: transform;
+}
+
+.b2b-card-hover:hover {
+  transform: translateY(-4px);
+}
+
+/* Section rendering isolation for ultra-low scroll CPU cost */
+.perf-section-cv {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+/* Import Lenis Baseline Rules (Zero-Jank configuration) */
+html.lenis, html.lenis body {
+  height: auto;
+  scroll-behavior: auto !important;
+}
+
+/* ==========================================================================
+   INFINITE HARDWARE MARQUEE RAILS (COMPOSITOR ISOLATED)
+   ========================================================================== */
+@keyframes marquee-left {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 32s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 32s linear infinite;
+  will-change: transform;
+}
+
+.pause-on-hover:hover .animate-marquee-left,
+.pause-on-hover:hover .animate-marquee-right {
+  animation-play-state: paused;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY (PREFERS-REDUCED-MOTION) & MOBILE HARDENING
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .b2b-card-hover:hover {
+    transform: none !important;
+  }
+}
+
+/* Specific Interactive Transitions (NEVER universal * selector) */
+a, button, [role="button"], input, select, textarea {
+  transition-property: color, background-color, border-color, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+body {
+  background-color: #0A0B0E;
+  color: #F8FAFC;
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+}
