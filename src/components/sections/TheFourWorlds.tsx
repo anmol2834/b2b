@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { TypographyMerge } from '@/components/core/TypographyMerge';
 
 export function TheFourWorlds() {
   const worlds = [
@@ -54,11 +55,12 @@ export function TheFourWorlds() {
           <div className="text-[11px] font-tech font-bold uppercase tracking-widest text-[#A8824C] mb-3">
             WHAT WE SUPPLY
           </div>
-          <h2 className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight leading-[1.1]">
-            Four categories.
-            <br />
-            One procurement partner.
-          </h2>
+          <TypographyMerge
+            as="h2"
+            className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight leading-[1.1]"
+          >
+            Four categories. One procurement partner.
+          </TypographyMerge>
         </div>
 
         {/* Four Gallery Panels Grid */}

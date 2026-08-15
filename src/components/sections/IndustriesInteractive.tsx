@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
+import { TypographyMerge } from '@/components/core/TypographyMerge';
 
 interface IndustryData {
   id: string;
@@ -87,11 +88,12 @@ export function IndustriesInteractive({ onSelectIndustry }: IndustriesInteractiv
           <div className="text-[11px] font-tech font-bold uppercase tracking-widest text-[#A8824C] mb-3">
             BUILT AROUND YOUR INDUSTRY
           </div>
-          <h2 className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight leading-[1.1]">
-            Different spaces.
-            <br />
-            Different requirements.
-          </h2>
+          <TypographyMerge
+            as="h2"
+            className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight leading-[1.1]"
+          >
+            Different spaces. Different requirements.
+          </TypographyMerge>
         </div>
 
         {/* Split Typographic & Preview Interactive Layout */}

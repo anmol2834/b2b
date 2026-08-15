@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { TypographyMerge } from '@/components/core/TypographyMerge';
 
 export function WhyPartnerWithUs() {
   const principles = [
@@ -35,11 +36,12 @@ export function WhyPartnerWithUs() {
           <div className="text-[11px] font-tech font-bold uppercase tracking-widest text-[#A8824C] mb-3">
             WHY PARTNER WITH US
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-[#141413] tracking-tight leading-[1.08]">
-            One requirement.
-            <br />
-            Multiple possibilities.
-          </h2>
+          <TypographyMerge
+            as="h2"
+            className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-[#141413] tracking-tight leading-[1.08]"
+          >
+            One requirement. Multiple possibilities.
+          </TypographyMerge>
         </div>
 
         {/* 4 Concise Principles in Editorial Grid */}

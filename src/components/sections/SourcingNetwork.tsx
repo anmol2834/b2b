@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ArrowRight, Globe, ShieldCheck, Factory, Layers } from 'lucide-react';
+import { TypographyMerge } from '@/components/core/TypographyMerge';
 
 interface SourcingNetworkProps {
   onRequestQuote: () => void;
@@ -41,9 +42,12 @@ export function SourcingNetwork({ onRequestQuote }: SourcingNetworkProps) {
             <div className="text-[11px] font-tech font-bold uppercase tracking-widest text-[#A8824C] mb-3">
               OUR SOURCING NETWORK
             </div>
-            <h2 className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight leading-[1.1] mb-6">
+            <TypographyMerge
+              as="h2"
+              className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight leading-[1.1] mb-6"
+            >
               The right product isn&apos;t always from one brand.
-            </h2>
+            </TypographyMerge>
             <p className="text-sm sm:text-base font-body text-[#5C5852] leading-relaxed mb-8">
               We work across categories and sourcing networks to help identify products that fit your project&apos;s requirements.
             </p>

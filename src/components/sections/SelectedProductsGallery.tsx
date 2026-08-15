@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { ProductSpecItem, DIVISIONS } from '@/config/divisions';
+import { TypographyMerge } from '@/components/core/TypographyMerge';
 
 export function SelectedProductsGallery() {
   // Select exactly 6 iconic products across divisions
@@ -27,9 +28,12 @@ export function SelectedProductsGallery() {
             <div className="text-[11px] font-tech font-bold uppercase tracking-widest text-[#A8824C] mb-3">
               CURATED SPECIFICATIONS
             </div>
-            <h2 className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight">
+            <TypographyMerge
+              as="h2"
+              className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight"
+            >
               Selected Products.
-            </h2>
+            </TypographyMerge>
           </div>
           <p className="text-xs sm:text-sm font-body text-[#5C5852] max-w-md">
             Engineered fixtures and architectural assets specified in premier commercial and luxury developments worldwide.

@@ -53,9 +53,7 @@ export function ArchitecturalHero({
             
             {/* Large Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-display font-extrabold tracking-tight text-[#141413] leading-[1.08] mb-6">
-              Everything Your Project Needs.
-              <br />
-              <span className="text-[#A8824C]">Sourced Right.</span>
+              Everything Your Project Needs. <span className="text-[#A8824C]">Sourced Right.</span>
             </h1>
 
             {/* Supporting Line */}
