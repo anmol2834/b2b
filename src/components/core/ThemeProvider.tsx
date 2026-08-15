@@ -17,7 +17,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const THEME_STORAGE_KEY = 'app-b2b-theme';
-const DEFAULT_THEME: ThemeType = 'titanium-dark';
+const DEFAULT_THEME: ThemeType = 'enterprise-light';
 
 let currentTheme: ThemeType = DEFAULT_THEME;
 const listeners = new Set<() => void>();

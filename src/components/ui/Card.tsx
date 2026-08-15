@@ -15,9 +15,9 @@ export function Card({
   const baseStyles = 'rounded-2xl p-6 transition-all duration-300';
 
   const variants = {
-    glass: 'bg-[#12141A]/80 backdrop-blur-md border border-slate-800/80 hover:border-slate-700/80 shadow-lg shadow-black/40',
-    solid: 'bg-[#12141A] border border-slate-800',
-    bordered: 'border border-slate-800 bg-transparent hover:border-[#D4AF37]/40',
+    glass: 'bg-white/90 backdrop-blur-md border border-slate-200 hover:border-slate-300 shadow-lg shadow-slate-900/5',
+    solid: 'bg-white border border-slate-200 shadow-sm',
+    bordered: 'border border-slate-200 bg-transparent hover:border-accent-border',
   };
 
   return (

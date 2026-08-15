@@ -98,110 +98,132 @@ export const CATEGORY_GALLERIES: Record<string, CategorySlide[]> = {
     {
       url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
       title: 'High-Capacity Automatic Revolving Door',
-      spec: 'EN 16005 Safety Sensors • 3-Wing Curved Tempered Glass • Air Curtain Ready',
-      tag: 'COMMERCIAL FACADE',
-      projectType: 'Skyscraper Main Atrium Lobby',
+      spec: 'EN 16005 Safety Standard • Integrated Air Curtain • Breakout Wings',
+      tag: 'FACADE AUTOMATION',
+      projectType: 'Airport Terminal 3 Main Entrance',
     },
     {
       url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
-      title: 'Optical Speed Turnstiles & Access Gates',
-      spec: 'Biometric & RFID Reader Integration • 60 Persons/Min High Throughput',
-      tag: 'SECURITY & MEP',
+      title: 'Optical Speed Turnstile & Access Gate',
+      spec: 'Brushless Servo Motor • 0.2s Rapid Retraction • Biometric Reader Housing',
+      tag: 'ACCESS CONTROL',
       projectType: 'Corporate Headquarters Concourse',
     },
     {
       url: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
-      title: 'High-Speed Spiral Insulated Roll-Up Door',
-      spec: '100,000 Cycle Tested • Thermal Break Anodized Aluminum • 2.5 m/s Speed',
-      tag: 'INDUSTRIAL ACCESS',
-      projectType: 'Pharmaceutical Cleanroom Facility',
+      title: 'High-Speed Spiral Cleanroom Door',
+      spec: 'Class 1 Cleanroom Certified • Non-Contact Roll-Up • 2.5 m/s Cycle',
+      tag: 'CLEANROOM / PHARMA',
+      projectType: 'Bio-Pharmaceutical R&D Facility',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+      title: 'Heavy-Duty Commercial Recessed Air Curtain',
+      spec: 'Centrifugal Double-Inlet Blower • Modbus BMS Integration • High Velocity',
+      tag: 'HVAC & BARRIER',
+      projectType: 'Flagship Luxury Mall Portals',
     },
   ],
   industrial: [
     {
-      url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80',
+      url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80',
       title: 'Heavy Hydraulic Loading Dock Leveler',
-      spec: '20-Ton Dynamic Load • Telescopic Lip • Integrated Inflatable Shelter',
+      spec: '15-Ton Dynamic Capacity • Anti-Slip Tear Plate • Emergency Velocity Fuse',
       tag: 'LOGISTICS & MRO',
-      projectType: 'Regional Distribution Fulfillment Hub',
+      projectType: 'Mega Distribution Fulfillment Hub',
     },
     {
       url: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80',
-      title: 'Industrial Flow Control Valves & Actuators',
-      spec: 'Cast Steel Flanged Body • ISO 5211 Actuator Pad • ANSI Class 300',
-      tag: 'PLANT MEP',
-      projectType: 'Petrochemical Refining Facility',
+      title: 'High-Flow Industrial Pumping Station',
+      spec: 'Multistage Stainless Steel Impellers • VFD Energy Optimizer • Dual Redundancy',
+      tag: 'FACILITY HYDRAULICS',
+      projectType: 'Municipal Water & Cooling Grid',
     },
     {
-      url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-      title: 'High-Volume Vertical Multistage Pumps',
-      spec: 'Stainless Steel Impeller • IE3 Premium Efficiency Motor • 25 Bar Rating',
-      tag: 'PUMPING SYSTEMS',
-      projectType: 'Municipal Water Treatment Station',
+      url: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80',
+      title: 'Heavy Pneumatic Actuated Ball Valves',
+      spec: 'ANSI 600 Class • Fire-Safe API 607 • Double-Acting Rack & Pinion',
+      tag: 'FLOW CONTROL',
+      projectType: 'Petrochemical Facility Piping Matrix',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+      title: 'Heavy-Duty Safety Guardrail & Impact System',
+      spec: 'Polymer Memory Core • 20,000J Kinetic Absorption • Zero Floor Damage',
+      tag: 'WAREHOUSE SAFETY',
+      projectType: 'Automated AGV Logistics Floor',
     },
   ],
 };
 
 interface HeroImageShowcaseProps {
   activeCategory: string;
-  onRequestQuote: (divisionId?: string) => void;
+  onRequestQuote: (category: string) => void;
 }
 
-export function HeroImageShowcase({ activeCategory, onRequestQuote }: HeroImageShowcaseProps) {
+export function HeroImageShowcase({ 
+  activeCategory, 
+  onRequestQuote 
+}: HeroImageShowcaseProps) {
   const slides = CATEGORY_GALLERIES[activeCategory] || CATEGORY_GALLERIES.sanitary;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
 
-  const goToSlide = useCallback((index: number) => {
-    const total = slides.length;
-    setCurrentIndex((index + total) % total);
+  // Auto slideshow ticker (4.5s per image)
+  const SLIDE_DURATION = 4500;
+  const TICK_INTERVAL = 50;
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % slides.length);
     setProgress(0);
   }, [slides.length]);
 
-  const nextSlide = useCallback(() => {
-    goToSlide(currentIndex + 1);
-  }, [currentIndex, goToSlide]);
-
   const prevSlide = useCallback(() => {
-    goToSlide(currentIndex - 1);
-  }, [currentIndex, goToSlide]);
+    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
+    setProgress(0);
+  }, [slides.length]);
 
-  // Auto-Play Progress Bar & Transitions
+  const goToSlide = (idx: number) => {
+    setCurrentIndex(idx);
+    setProgress(0);
+  };
+
+  const [prevCategory, setPrevCategory] = useState(activeCategory);
+  if (activeCategory !== prevCategory) {
+    setPrevCategory(activeCategory);
+    setCurrentIndex(0);
+    setProgress(0);
+  }
+
+  // Slideshow progress tick
   useEffect(() => {
     if (!isPlaying) return;
 
-    const duration = 5000;
-    const intervalTime = 50;
-    const step = (intervalTime / duration) * 100;
-
-    const progressInterval = setInterval(() => {
+    const timer = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           nextSlide();
           return 0;
         }
-        return prev + step;
+        return prev + (TICK_INTERVAL / SLIDE_DURATION) * 100;
       });
-    }, intervalTime);
+    }, TICK_INTERVAL);
 
-    return () => {
-      clearInterval(progressInterval);
-    };
+    return () => clearInterval(timer);
   }, [isPlaying, nextSlide]);
 
-  // Ensure index is within current category bounds
-  const safeIndex = currentIndex % slides.length;
-  const currentSlide = slides[safeIndex] || slides[0];
+  const safeIndex = currentIndex < slides.length ? currentIndex : 0;
+  const currentSlide = slides[safeIndex];
 
   return (
     <div 
-      className="relative w-full rounded-3xl border border-white/15 bg-[#101218]/95 backdrop-blur-2xl shadow-2xl shadow-black/90 overflow-hidden flex flex-col justify-between group"
+      className="gpu-layer group relative w-full max-w-2xl rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-xl shadow-slate-900/5 transition-all duration-300"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >
       {/* Top Ambient Progress Bar */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-white/10 z-30 overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-1 bg-slate-200 z-30 overflow-hidden">
         <div 
           className="h-full transition-all duration-75 ease-linear"
           style={{ 
@@ -212,7 +234,7 @@ export function HeroImageShowcase({ activeCategory, onRequestQuote }: HeroImageS
       </div>
 
       {/* Main Image Viewport with Smooth Crossfade */}
-      <div className="relative w-full h-[320px] sm:h-[420px] overflow-hidden">
+      <div className="relative w-full h-[320px] sm:h-[420px] overflow-hidden bg-slate-100">
         {slides.map((slide, index) => {
           const isActive = index === safeIndex;
           return (
@@ -235,7 +257,7 @@ export function HeroImageShowcase({ activeCategory, onRequestQuote }: HeroImageS
               />
 
               {/* Gradient Vignette Overlays for Text Contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0B0E] via-black/30 to-black/50" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/40" />
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
             </div>
           );
@@ -243,18 +265,18 @@ export function HeroImageShowcase({ activeCategory, onRequestQuote }: HeroImageS
 
         {/* Top Telemetry Overlay */}
         <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/15 bg-black/65 backdrop-blur-md text-[11px] font-tech text-white shadow-lg">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 bg-black/65 backdrop-blur-md text-[11px] font-tech text-white shadow-lg">
             <span className="h-2 w-2 rounded-full bg-accent-primary animate-pulse" />
             <span className="font-bold text-accent-primary uppercase tracking-wider">
               {currentSlide.tag}
             </span>
-            <span className="text-slate-500">•</span>
+            <span className="text-slate-400">•</span>
             <span className="text-slate-200 truncate">{currentSlide.projectType}</span>
           </div>
 
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-white/10 bg-black/50 backdrop-blur-md text-[10px] font-tech text-slate-300">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-white/15 bg-black/50 backdrop-blur-md text-[10px] font-tech text-slate-300">
             <span>{String(safeIndex + 1).padStart(2, '0')}</span>
-            <span className="text-slate-600">/</span>
+            <span className="text-slate-500">/</span>
             <span className="text-slate-400">{String(slides.length).padStart(2, '0')}</span>
           </div>
         </div>
@@ -265,7 +287,7 @@ export function HeroImageShowcase({ activeCategory, onRequestQuote }: HeroImageS
             <h3 className="text-base sm:text-xl font-display font-bold text-white leading-tight drop-shadow-md">
               {currentSlide.title}
             </h3>
-            <p className="text-[11px] sm:text-xs font-body text-slate-300 mt-1 flex items-center gap-1.5 drop-shadow-sm">
+            <p className="text-[11px] sm:text-xs font-body text-slate-200 mt-1 flex items-center gap-1.5 drop-shadow-sm">
               <ShieldCheck className="w-3.5 h-3.5 text-accent-primary shrink-0" />
               <span className="truncate">{currentSlide.spec}</span>
             </p>
@@ -274,7 +296,7 @@ export function HeroImageShowcase({ activeCategory, onRequestQuote }: HeroImageS
 
         {/* Play/Pause Indicator on hover */}
         <div className="absolute bottom-4 right-4 z-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-          <div className="p-1.5 rounded-lg bg-black/60 border border-white/10 text-slate-400 text-[10px] font-tech flex items-center gap-1">
+          <div className="p-1.5 rounded-lg bg-black/60 border border-white/10 text-slate-300 text-[10px] font-tech flex items-center gap-1 backdrop-blur-xs">
             {isPlaying ? <Play className="w-3 h-3 text-accent-primary" /> : <Pause className="w-3 h-3 text-accent-secondary" />}
             <span>{isPlaying ? 'AUTO' : 'PAUSED'}</span>
           </div>
@@ -282,13 +304,13 @@ export function HeroImageShowcase({ activeCategory, onRequestQuote }: HeroImageS
       </div>
 
       {/* Bottom Interactive Thumbnail Strip & Slide Controls */}
-      <div className="p-3 sm:p-4 bg-[#0E1015] border-t border-white/10 flex items-center justify-between gap-3 z-20">
+      <div className="p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-3 z-20">
         
         {/* Navigation Arrow Left */}
         <button
           type="button"
           onClick={prevSlide}
-          className="p-2 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-white hover:border-accent-border hover:bg-white/10 transition-all active:scale-95 shrink-0"
+          className="p-2 rounded-xl border border-slate-200 bg-white text-slate-700 hover:text-slate-900 hover:border-accent-border hover:bg-slate-100 transition-all active:scale-95 shrink-0 shadow-xs"
           aria-label="Previous Slide"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -305,8 +327,8 @@ export function HeroImageShowcase({ activeCategory, onRequestQuote }: HeroImageS
                 onClick={() => goToSlide(idx)}
                 className={`relative w-12 h-9 sm:w-16 sm:h-11 rounded-lg overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
                   isActive 
-                    ? 'border-accent-primary shadow-b2b-glow scale-105' 
-                    : 'border-white/15 opacity-50 hover:opacity-100 hover:border-white/30'
+                    ? 'border-accent-primary shadow-sm scale-105' 
+                    : 'border-slate-300 opacity-60 hover:opacity-100 hover:border-slate-400'
                 }`}
               >
                 <Image
@@ -326,7 +348,7 @@ export function HeroImageShowcase({ activeCategory, onRequestQuote }: HeroImageS
           <button
             type="button"
             onClick={nextSlide}
-            className="p-2 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-white hover:border-accent-border hover:bg-white/10 transition-all active:scale-95 shrink-0"
+            className="p-2 rounded-xl border border-slate-200 bg-white text-slate-700 hover:text-slate-900 hover:border-accent-border hover:bg-slate-100 transition-all active:scale-95 shrink-0 shadow-xs"
             aria-label="Next Slide"
           >
             <ChevronRight className="w-4 h-4" />

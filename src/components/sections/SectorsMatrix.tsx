@@ -3,6 +3,7 @@
 import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { ScrollItemFade } from '@/components/core/ScrollItemFade';
 import { 
   Building, 
   Hotel, 
@@ -339,67 +340,71 @@ export function SectorsMatrix({ onRequestQuote }: { onRequestQuote?: (sectorId?:
     >
       <div className="mx-auto max-w-7xl">
         
-        {/* Master Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 text-xs font-tech uppercase tracking-wider rounded-full border border-accent-border bg-accent-surface text-accent-primary font-semibold">
-              <Building className="w-3.5 h-3.5" />
-              Cross-Sector Bulk Supply Capacity
+        {/* Master Section Header with Scroll Fade */}
+        <ScrollItemFade className="mb-12">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 text-xs font-tech uppercase tracking-wider rounded-full border border-accent-border bg-accent-surface text-accent-primary font-semibold">
+                <Building className="w-3.5 h-3.5" />
+                Cross-Sector Bulk Supply Capacity
+              </div>
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold text-[#0F172A] tracking-tight leading-[1.12]">
+                Direct Multi-Brand Supply Across{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0F172A] via-slate-800 to-accent-primary">
+                  Six Strategic Industry Sectors.
+                </span>
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base max-w-2xl mt-2 font-body leading-relaxed">
+                Supplying architectural sanitaryware, hotel FF&E, automated access, and industrial facilities under unified bulk invoices.
+              </p>
             </div>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold text-[#0F172A] tracking-tight leading-[1.12]">
-              Direct Multi-Brand Supply Across{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0F172A] via-slate-800 to-accent-primary">
-                Six Strategic Industry Sectors.
-              </span>
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base max-w-2xl mt-2 font-body leading-relaxed">
-              Supplying architectural sanitaryware, hotel FF&E, automated access, and industrial facilities under unified bulk invoices.
-            </p>
+
+            <a
+              href="#compliance"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:border-accent-border text-xs font-tech text-slate-700 transition-colors shadow-sm w-fit shrink-0 font-medium"
+            >
+              <Download className="w-4 h-4 text-accent-primary" />
+              <span>Download Cross-Sector Wholesale Schedule (PDF)</span>
+            </a>
           </div>
+        </ScrollItemFade>
 
-          <a
-            href="#compliance"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:border-accent-border text-xs font-tech text-slate-700 transition-colors shadow-sm w-fit shrink-0"
-          >
-            <Download className="w-4 h-4 text-accent-primary" />
-            <span>Download Cross-Sector Wholesale Schedule (PDF)</span>
-          </a>
-        </div>
+        {/* Sector Filter Rail with Scroll Fade */}
+        <ScrollItemFade className="mb-10">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+            <button
+              type="button"
+              onClick={() => setActiveFilter('all')}
+              className={`px-4 py-2 rounded-xl text-xs font-tech font-bold transition-all whitespace-nowrap ${
+                activeFilter === 'all'
+                  ? 'border border-accent-border bg-accent-surface text-accent-primary shadow-sm'
+                  : 'border border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+              }`}
+            >
+              All 6 Sectors
+            </button>
 
-        {/* Sector Filter Rail */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none">
-          <button
-            type="button"
-            onClick={() => setActiveFilter('all')}
-            className={`px-4 py-2 rounded-xl text-xs font-tech font-bold transition-all whitespace-nowrap ${
-              activeFilter === 'all'
-                ? 'border border-accent-border bg-accent-surface text-accent-primary shadow-sm'
-                : 'border border-slate-200 bg-white text-slate-600 hover:border-slate-300'
-            }`}
-          >
-            All 6 Sectors
-          </button>
-
-          {SECTOR_DATA.map((s) => {
-            const Icon = s.icon;
-            const isActive = activeFilter === s.id;
-            return (
-              <button
-                key={s.id}
-                type="button"
-                onClick={() => setActiveFilter(s.id)}
-                className={`px-4 py-2 rounded-xl text-xs font-tech font-semibold flex items-center gap-2 transition-all whitespace-nowrap ${
-                  isActive
-                    ? 'border border-accent-border bg-accent-surface text-accent-primary shadow-sm'
-                    : 'border border-slate-200 bg-white text-slate-600 hover:border-slate-300'
-                }`}
-              >
-                <Icon className="w-3.5 h-3.5" />
-                <span>{s.title.split(' ')[0]}</span>
-              </button>
-            );
-          })}
-        </div>
+            {SECTOR_DATA.map((s) => {
+              const Icon = s.icon;
+              const isActive = activeFilter === s.id;
+              return (
+                <button
+                  key={s.id}
+                  type="button"
+                  onClick={() => setActiveFilter(s.id)}
+                  className={`px-4 py-2 rounded-xl text-xs font-tech font-semibold flex items-center gap-2 transition-all whitespace-nowrap ${
+                    isActive
+                      ? 'border border-accent-border bg-accent-surface text-accent-primary shadow-sm'
+                      : 'border border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                  }`}
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                  <span>{s.title.split(' ')[0]}</span>
+                </button>
+              );
+            })}
+          </div>
+        </ScrollItemFade>
 
         {/* Asymmetrical 2-Column Sector Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">

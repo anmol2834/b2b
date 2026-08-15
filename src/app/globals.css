@@ -3,80 +3,74 @@
 @config "../../tailwind.config.ts";
 
 /* ==========================================================================
-   MULTI-PALETTE ACCENT TOKENS (DUAL-TONE #111 & #FFF ARCHITECTURE)
+   MULTI-PALETTE ACCENT TOKENS (PREMIUM LIGHT THEME ENTERPRISE ARCHITECTURE)
    ========================================================================== */
 
-/* 1. TITANIUM OBSIDIAN (DEFAULT DARK LUXURY ARCHITECTURAL) */
+/* 1. ENTERPRISE LIGHT / MODERN BLUE (DEFAULT 100% LIGHT THEME) */
 :root,
-[data-theme="titanium-dark"] {
-  --accent-primary: #D4AF37;
-  --accent-secondary: #00E5FF;
-  --accent-tertiary: #F59E0B;
-  --accent-surface: rgba(212, 175, 55, 0.08);
-  --accent-border: rgba(212, 175, 55, 0.25);
-  --accent-border-hover: rgba(212, 175, 55, 0.7);
-  --glow-color: rgba(212, 175, 55, 0.2);
-  --pattern-color: rgba(212, 175, 55, 0.07);
-}
-
-/* 2. ENTERPRISE LIGHT / MODERN BLUE */
 [data-theme="enterprise-light"] {
   --accent-primary: #0284C7;
-  --accent-secondary: #38BDF8;
+  --accent-secondary: #0D9488;
   --accent-tertiary: #0369A1;
   --accent-surface: rgba(2, 132, 199, 0.08);
   --accent-border: rgba(2, 132, 199, 0.25);
-  --accent-border-hover: rgba(2, 132, 199, 0.7);
-  --glow-color: rgba(2, 132, 199, 0.2);
-  --pattern-color: rgba(2, 132, 199, 0.07);
+  --accent-border-hover: rgba(2, 132, 199, 0.65);
+  --glow-color: rgba(2, 132, 199, 0.15);
+  --pattern-color: rgba(15, 23, 42, 0.04);
 }
 
-/* 3. EMERALD FOREST (ECO & SUSTAINABLE PROCUREMENT) */
+/* 2. TITANIUM GOLD LIGHT */
+[data-theme="titanium-dark"] {
+  --accent-primary: #B48C1C;
+  --accent-secondary: #0284C7;
+  --accent-tertiary: #D97706;
+  --accent-surface: rgba(180, 140, 28, 0.08);
+  --accent-border: rgba(180, 140, 28, 0.25);
+  --accent-border-hover: rgba(180, 140, 28, 0.65);
+  --glow-color: rgba(180, 140, 28, 0.15);
+  --pattern-color: rgba(15, 23, 42, 0.04);
+}
+
+/* 3. EMERALD FOREST */
 [data-theme="emerald-forest"] {
-  --accent-primary: #57EF40;
-  --accent-secondary: #65C556;
-  --accent-tertiary: #689E5F;
-  --accent-surface: rgba(87, 239, 64, 0.08);
-  --accent-border: rgba(87, 239, 64, 0.25);
-  --accent-border-hover: rgba(87, 239, 64, 0.7);
-  --glow-color: rgba(87, 239, 64, 0.2);
-  --pattern-color: rgba(87, 239, 64, 0.07);
+  --accent-primary: #059669;
+  --accent-secondary: #10B981;
+  --accent-tertiary: #047857;
+  --accent-surface: rgba(5, 150, 105, 0.08);
+  --accent-border: rgba(5, 150, 105, 0.25);
+  --accent-border-hover: rgba(5, 150, 105, 0.65);
+  --glow-color: rgba(5, 150, 105, 0.15);
+  --pattern-color: rgba(15, 23, 42, 0.04);
 }
 
-/* 4. SUNSET OCHRE (HOSPITALITY LUXURY WARMTH) */
+/* 4. SUNSET OCHRE */
 [data-theme="sunset-ochre"] {
-  --accent-primary: #FABF52;
-  --accent-secondary: #FA8952;
-  --accent-tertiary: #FAA652;
-  --accent-surface: rgba(250, 191, 82, 0.08);
-  --accent-border: rgba(250, 191, 82, 0.25);
-  --accent-border-hover: rgba(250, 191, 82, 0.7);
-  --glow-color: rgba(250, 191, 82, 0.2);
-  --pattern-color: rgba(250, 191, 82, 0.07);
+  --accent-primary: #D97706;
+  --accent-secondary: #EA580C;
+  --accent-tertiary: #B45309;
+  --accent-surface: rgba(217, 119, 6, 0.08);
+  --accent-border: rgba(217, 119, 6, 0.25);
+  --accent-border-hover: rgba(217, 119, 6, 0.65);
+  --glow-color: rgba(217, 119, 6, 0.15);
+  --pattern-color: rgba(15, 23, 42, 0.04);
 }
 
-/* 5. CYBER INDUSTRIAL (HIGH-CONTRAST ROBOTICS & AUTOMATION) */
+/* 5. CYBER INDUSTRIAL */
 [data-theme="cyber-industrial"] {
-  --accent-primary: #2514EB;
-  --accent-secondary: #F02C10;
-  --accent-tertiary: #C135EB;
-  --accent-surface: rgba(37, 20, 235, 0.08);
-  --accent-border: rgba(37, 20, 235, 0.25);
-  --accent-border-hover: rgba(37, 20, 235, 0.7);
-  --glow-color: rgba(37, 20, 235, 0.25);
-  --pattern-color: rgba(37, 20, 235, 0.07);
+  --accent-primary: #4F46E5;
+  --accent-secondary: #DC2626;
+  --accent-tertiary: #7C3AED;
+  --accent-surface: rgba(79, 70, 229, 0.08);
+  --accent-border: rgba(79, 70, 229, 0.25);
+  --accent-border-hover: rgba(79, 70, 229, 0.65);
+  --glow-color: rgba(79, 70, 229, 0.15);
+  --pattern-color: rgba(15, 23, 42, 0.04);
 }
 
 /* ==========================================================================
    ARCHITECTURAL GRID PATTERNS & MICRO TEXTURES (ISOLATED & ZERO-PAINT)
    ========================================================================== */
-.arch-grid-dark {
-  background-image: 
-    linear-gradient(to right, var(--pattern-color) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--pattern-color) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
+.arch-grid-dark,
 .arch-grid-light {
   background-image: 
     linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
@@ -200,8 +194,8 @@ a, button, [role="button"], input, select, textarea {
 }
 
 body {
-  background-color: #0A0B0E;
-  color: #F8FAFC;
+  background-color: #F8FAFC;
+  color: #0F172A;
   font-family: var(--font-body), sans-serif;
   overflow-x: hidden;
   text-rendering: optimizeSpeed;
