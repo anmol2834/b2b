@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/navigation/Header';
 import { ArchitecturalHero } from '@/components/sections/ArchitecturalHero';
@@ -24,30 +24,25 @@ let globalHasSeenSplashOnHome = false;
 export default function LuxuryArchitecturalB2BPage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [quoteDivision, setQuoteDivision] = useState<string | undefined>();
-  
-  // Show splash ONLY on full page refresh/reload from the home page
-  const [isSplashComplete, setIsSplashComplete] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return true;
+  const [isSplashComplete, setIsSplashComplete] = useState(false);
 
-    // If navigation back to home within same session, skip splash screen
+  // Safely check client-side navigation inside useEffect to prevent SSR hydration mismatches
+  useEffect(() => {
     if (globalHasSeenSplashOnHome) {
-      return true;
+      setIsSplashComplete(true);
+      return;
     }
 
-    // Check if this is a hard browser reload (F5 / Refresh button)
     const navEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
     const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
-
-    // If user clicked 'Back to Home' from another page (not a reload), skip splash
     const sessionSeen = sessionStorage.getItem('hasSeenSplashOnHome');
+
+    // If returning from another page without a browser reload, skip splash
     if (!isReload && sessionSeen) {
       globalHasSeenSplashOnHome = true;
-      return true;
+      setIsSplashComplete(true);
     }
-
-    // Play splash for refresh on home page or initial direct visit
-    return false;
-  });
+  }, []);
 
   const handleSplashComplete = () => {
     globalHasSeenSplashOnHome = true;

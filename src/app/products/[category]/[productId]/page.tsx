@@ -95,7 +95,7 @@ export default async function NestedProductDetailPage({ params }: NestedProductP
               <span>Back to {parentCategory?.title || 'Category'}</span>
             </Link>
 
-            <div className="flex flex-wrap items-center gap-2 text-xs font-tech text-[#8E8981]">
+            <div className="hidden sm:flex flex-wrap items-center gap-2 text-xs font-tech text-[#8E8981]">
               <Link href="/" className="hover:text-[#141413] transition-colors">Home</Link>
               <ChevronRight className="w-3 h-3 text-[#D8D2C5]" />
               <Link href="/products" className="hover:text-[#141413] transition-colors">Products</Link>
@@ -154,17 +154,6 @@ export default async function NestedProductDetailPage({ params }: NestedProductP
                   <span className="font-semibold">{code}</span>
                   <span className="text-slate-300 truncate ml-2">Direct Manufacturer SLA</span>
                 </div>
-              </div>
-
-              {/* Submittal Notice Bar */}
-              <div className="bg-[#EBE6DC]/60 border border-[#E5E0D5] p-4 flex items-center justify-between text-xs font-tech text-[#5C5852]">
-                <div className="flex items-center gap-2">
-                  <FileSpreadsheet className="w-4 h-4 text-[#A8824C]" />
-                  <span>CAD / BIM Data & Submittal Specs</span>
-                </div>
-                <span className="font-semibold text-[#141413] underline cursor-pointer hover:text-[#A8824C]">
-                  Request PDF
-                </span>
               </div>
             </div>
 
