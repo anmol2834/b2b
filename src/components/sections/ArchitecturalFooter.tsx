@@ -36,8 +36,8 @@ export function ArchitecturalFooter({ onRequestQuote }: ArchitecturalFooterProps
             </div>
           </div>
 
-          {/* Columns (7 Cols) */}
-          <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-8">
+          {/* Columns (3 Cols) */}
+          <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
             
             {/* Column 1: PRODUCTS */}
             <div>
@@ -75,19 +75,6 @@ export function ArchitecturalFooter({ onRequestQuote }: ArchitecturalFooterProps
                 <li><a href="#supply-chain" className="hover:text-[#141413] transition-colors">Sourcing</a></li>
                 <li><a href="#solutions" className="hover:text-[#141413] transition-colors">Brands</a></li>
                 <li><a href="#boq-uploader" className="hover:text-[#141413] transition-colors">Contact</a></li>
-              </ul>
-            </div>
-
-            {/* Column 4: RESOURCES */}
-            <div>
-              <div className="text-xs font-tech font-bold uppercase tracking-wider text-[#141413] mb-4">
-                Resources
-              </div>
-              <ul className="space-y-2.5 text-xs font-body text-[#5C5852]">
-                <li><a href="#boq-uploader" className="hover:text-[#141413] transition-colors">Catalogues</a></li>
-                <li><a href="#supply-chain" className="hover:text-[#141413] transition-colors">Submittals</a></li>
-                <li><a href="#solutions" className="hover:text-[#141413] transition-colors">Guides</a></li>
-                <li><a href="#why-us" className="hover:text-[#141413] transition-colors">FAQs</a></li>
               </ul>
             </div>
 

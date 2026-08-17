@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/navigation/Header';
 import { ArchitecturalHero } from '@/components/sections/ArchitecturalHero';
 import { TheFourWorlds } from '@/components/sections/TheFourWorlds';
@@ -16,10 +17,12 @@ import { BOQEngine } from '@/components/sections/BOQEngine';
 import { FinalMinimalCTA } from '@/components/sections/FinalMinimalCTA';
 import { ArchitecturalFooter } from '@/components/sections/ArchitecturalFooter';
 import { QuoteModal } from '@/components/navigation/QuoteModal';
+import { VertexSplash } from '@/components/navigation/VertexSplash';
 
 export default function LuxuryArchitecturalB2BPage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [quoteDivision, setQuoteDivision] = useState<string | undefined>();
+  const [isSplashComplete, setIsSplashComplete] = useState(false);
 
   const handleOpenQuote = (divisionId?: string) => {
     setQuoteDivision(divisionId);
@@ -45,62 +48,77 @@ export default function LuxuryArchitecturalB2BPage() {
   return (
     <main className="relative w-full min-h-screen bg-[#FAF9F5] text-[#141413] selection:bg-[#B3884D] selection:text-white overflow-x-clip font-body">
       
-      {/* 1. Global Clean Sticky Header */}
-      <Header />
+      {/* Custom Brand Assembly Splash Screen managed via exit presence */}
+      <AnimatePresence>
+        {!isSplashComplete && (
+          <VertexSplash key="splash-screen" onComplete={() => setIsSplashComplete(true)} />
+        )}
+      </AnimatePresence>
 
-      {/* 2. Hero Section (85–95vh Editorial Split) */}
-      <ArchitecturalHero
-        onExploreProducts={scrollToCategories}
-        onStartProject={scrollToBOQ}
-      />
+      {/* Main Website Content Fades In and Expands on Splash Complete */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isSplashComplete ? 1 : 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full"
+      >
+        {/* 1. Global Clean Sticky Header */}
+        <Header />
 
-      {/* 3. The Four Worlds (01 Sanitary, 02 Hospitality, 03 Entrance, 04 Industrial) */}
-      <TheFourWorlds />
+        {/* 2. Hero Section (85–95vh Editorial Split) */}
+        <ArchitecturalHero
+          onExploreProducts={scrollToCategories}
+          onStartProject={scrollToBOQ}
+        />
 
-      {/* 4. Section Transition ("From specification to supply.") */}
-      <SectionTransition />
+        {/* 3. The Four Worlds (01 Sanitary, 02 Hospitality, 03 Entrance, 04 Industrial) */}
+        <TheFourWorlds />
 
-      {/* 5. Industries Section (Interactive Hover Reveal) */}
-      <IndustriesInteractive />
+        {/* 4. Section Transition ("From specification to supply.") */}
+        <SectionTransition />
 
-      {/* 6. B2B Wholesale Supply Banner */}
-      <ProjectProcurementBanner
-        onUploadBOQ={scrollToBOQ}
-        onTalkToExpert={() => handleOpenQuote()}
-      />
+        {/* 5. Industries Section (Interactive Hover Reveal) */}
+        <IndustriesInteractive />
 
-      {/* 7. Supply Process (5-Step Horizontal Timeline) */}
-      <ProcurementProcessTimeline />
+        {/* 6. B2B Wholesale Supply Banner */}
+        <ProjectProcurementBanner
+          onUploadBOQ={scrollToBOQ}
+          onTalkToExpert={() => handleOpenQuote()}
+        />
 
-      {/* 8. Why Us ("One requirement. Multiple possibilities.") */}
-      <WhyPartnerWithUs />
+        {/* 7. Supply Process (5-Step Horizontal Timeline) */}
+        <ProcurementProcessTimeline />
 
-      {/* 9. Selected Products (6 Curated Items Linking to Dedicated Product Routes) */}
-      <SelectedProductsGallery />
+        {/* 8. Why Us ("One requirement. Multiple possibilities.") */}
+        <WhyPartnerWithUs />
 
-      {/* 10. Sourcing Network ("The right product isn't always from one brand.") */}
-      <SourcingNetwork onRequestQuote={() => handleOpenQuote()} />
+        {/* 9. Selected Products (6 Curated Items Linking to Dedicated Product Routes) */}
+        <SelectedProductsGallery />
 
-      {/* 11. Alternating Scroll & Specification Dossiers */}
-      <AlternatingScrollMatrix
-        onRequestQuote={handleOpenQuote}
-      />
+        {/* 10. Sourcing Network ("The right product isn't always from one brand.") */}
+        <SourcingNetwork onRequestQuote={() => handleOpenQuote()} />
 
-      {/* 12. BOQ Requirement Engine & Drag-and-Drop Uploader */}
-      <BOQEngine />
+        {/* 11. Alternating Scroll & Specification Dossiers */}
+        <AlternatingScrollMatrix
+          onRequestQuote={handleOpenQuote}
+        />
 
-      {/* 13. Final Minimalist Closing CTA */}
-      <FinalMinimalCTA onRequestQuote={() => handleOpenQuote()} />
+        {/* 12. BOQ Requirement Engine & Drag-and-Drop Uploader */}
+        <BOQEngine />
 
-      {/* 14. Luxury Architectural Footer */}
-      <ArchitecturalFooter onRequestQuote={handleOpenQuote} />
+        {/* 13. Final Minimalist Closing CTA */}
+        <FinalMinimalCTA onRequestQuote={() => handleOpenQuote()} />
 
-      {/* Global Quotation / RFQ Modal */}
-      <QuoteModal
-        isOpen={isQuoteModalOpen}
-        onClose={() => setIsQuoteModalOpen(false)}
-        defaultDivision={quoteDivision}
-      />
+        {/* 14. Luxury Architectural Footer */}
+        <ArchitecturalFooter onRequestQuote={handleOpenQuote} />
+
+        {/* Global Quotation / RFQ Modal */}
+        <QuoteModal
+          isOpen={isQuoteModalOpen}
+          onClose={() => setIsQuoteModalOpen(false)}
+          defaultDivision={quoteDivision}
+        />
+      </motion.div>
     </main>
   );
 }

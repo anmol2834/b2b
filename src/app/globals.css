@@ -6,6 +6,7 @@
 
 @theme {
   --font-display: var(--font-display), sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
   --font-body: var(--font-body), sans-serif;
   --font-tech: var(--font-tech), monospace;
 
@@ -69,8 +70,21 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Hide scrollbar globally across all browsers */
+html, body {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+*::-webkit-scrollbar,
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+  background: transparent !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display), sans-serif;
   letter-spacing: -0.025em;
 }
 

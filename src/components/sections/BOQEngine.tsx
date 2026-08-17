@@ -187,12 +187,13 @@ export function BOQEngine() {
                           Supports .xlsx, .xls, .pdf, .csv up to 50MB
                         </p>
                         <label className="mt-4 inline-block px-4 py-2 bg-white border border-[#E5E0D5] text-xs font-tech text-[#141413] hover:border-[#141413] cursor-pointer transition-colors">
-                          Browse Local Files
+                           Browse Local Files
                           <input
                             type="file"
                             className="hidden"
                             accept=".xlsx,.xls,.csv,.pdf,.doc,.docx"
                             onChange={handleFileInput}
+                            suppressHydrationWarning
                           />
                         </label>
                       </div>
@@ -211,6 +212,7 @@ export function BOQEngine() {
                     value={requirementNotes}
                     onChange={(e) => setRequirementNotes(e.target.value)}
                     className="w-full p-3.5 bg-[#FAF9F5] border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413]"
+                    suppressHydrationWarning
                   />
                 </div>
 
@@ -229,6 +231,7 @@ export function BOQEngine() {
                         value={contactForm.fullName}
                         onChange={(e) => setContactForm({ ...contactForm, fullName: e.target.value })}
                         className="w-full pl-9 pr-3 py-2.5 bg-[#FAF9F5] border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413]"
+                        suppressHydrationWarning
                       />
                     </div>
                     <div className="relative">
@@ -240,6 +243,7 @@ export function BOQEngine() {
                         value={contactForm.companyName}
                         onChange={(e) => setContactForm({ ...contactForm, companyName: e.target.value })}
                         className="w-full pl-9 pr-3 py-2.5 bg-[#FAF9F5] border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413]"
+                        suppressHydrationWarning
                       />
                     </div>
                     <div className="relative">
@@ -251,6 +255,7 @@ export function BOQEngine() {
                         value={contactForm.workEmail}
                         onChange={(e) => setContactForm({ ...contactForm, workEmail: e.target.value })}
                         className="w-full pl-9 pr-3 py-2.5 bg-[#FAF9F5] border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413]"
+                        suppressHydrationWarning
                       />
                     </div>
                     <div className="relative">
@@ -262,6 +267,7 @@ export function BOQEngine() {
                         value={contactForm.phoneWhatsApp}
                         onChange={(e) => setContactForm({ ...contactForm, phoneWhatsApp: e.target.value })}
                         className="w-full pl-9 pr-3 py-2.5 bg-[#FAF9F5] border border-[#E5E0D5] text-xs font-body text-[#141413] placeholder-[#8E8981] focus:outline-none focus:border-[#141413]"
+                        suppressHydrationWarning
                       />
                     </div>
                   </div>
@@ -278,6 +284,7 @@ export function BOQEngine() {
                     type="submit"
                     disabled={isSubmitting}
                     className="w-full sm:w-auto py-3.5 px-8 bg-[#141413] text-[#FAF9F5] text-xs font-tech font-bold tracking-widest uppercase hover:bg-[#A8824C] transition-all flex items-center justify-center gap-2"
+                    suppressHydrationWarning
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>{isSubmitting ? 'Processing Dossier...' : 'Submit BOQ for Evaluation'}</span>

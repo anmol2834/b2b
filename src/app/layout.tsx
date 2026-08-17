@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Manrope, Inter, JetBrains_Mono } from 'next/font/google';
+import { Manrope, Inter, JetBrains_Mono, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { ScrollProvider } from '@/components/core/ScrollProvider';
 import { ThemeProvider } from '@/components/core/ThemeProvider';
@@ -9,6 +9,13 @@ import { MotionProvider } from '@/components/core/MotionProvider';
 const fontDisplay = Manrope({
   subsets: ['latin'],
   variable: '--font-display',
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
+});
+
+const fontSerif = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-serif',
   display: 'swap',
   weight: ['400', '500', '600', '700', '800'],
 });
@@ -41,7 +48,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontDisplay.variable} ${fontBody.variable} ${fontTech.variable}`}
+      className={`${fontDisplay.variable} ${fontSerif.variable} ${fontBody.variable} ${fontTech.variable}`}
       suppressHydrationWarning
     >
       <body className="bg-[#FAF9F5] text-[#141413] antialiased selection:bg-[#B3884D] selection:text-white">

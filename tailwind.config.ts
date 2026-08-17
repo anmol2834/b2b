@@ -34,6 +34,7 @@ const config: Config = {
       },
       fontFamily: {
         display: ['var(--font-display)', 'sans-serif'],
+        serif: ['var(--font-serif)', 'serif'],
         body: ['var(--font-body)', 'sans-serif'],
         tech: ['var(--font-tech)', 'monospace'],
       },
