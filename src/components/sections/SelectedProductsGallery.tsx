@@ -8,6 +8,14 @@ import { ProductSpecItem, DIVISIONS } from '@/config/divisions';
 import { TypographyMerge } from '@/components/core/TypographyMerge';
 
 export function SelectedProductsGallery() {
+  const getCategorySlug = (prodId: string) => {
+    if (prodId.startsWith('san')) return 'sanitary';
+    if (prodId.startsWith('hosp')) return 'hospitality';
+    if (prodId.startsWith('ent')) return 'entrance';
+    if (prodId.startsWith('ind')) return 'industrial';
+    return 'sanitary';
+  };
+
   // Select exactly 6 iconic products across divisions
   const selectedProducts: ProductSpecItem[] = [
     DIVISIONS.sanitary.products[0], // Concealed Thermostatic Shower (san-01)
@@ -30,13 +38,13 @@ export function SelectedProductsGallery() {
             </div>
             <TypographyMerge
               as="h2"
-              className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight"
+              className="text-3xl sm:text-5xl font-display font-bold text-[#141413] tracking-tight leading-[1.1]"
             >
-              Selected Products.
+              Architectural Product Showcase
             </TypographyMerge>
           </div>
-          <p className="text-xs sm:text-sm font-body text-[#5C5852] max-w-md">
-            Engineered fixtures and architectural assets specified in premier commercial and luxury developments worldwide.
+          <p className="text-xs sm:text-sm font-body text-[#5C5852] max-w-md leading-relaxed">
+            Every product supplied by Vertex passes rigorous ISO and LEED compliance standards with direct manufacturer warranty SLAs.
           </p>
         </div>
 
@@ -45,7 +53,8 @@ export function SelectedProductsGallery() {
           
           {/* Row 1: Large Feature (7 cols) + Tall Feature (5 cols) */}
           <Link
-            href={`/products/${selectedProducts[0].id}`}
+            href={`/products/${getCategorySlug(selectedProducts[0].id)}/${selectedProducts[0].id}`}
+            prefetch={true}
             className="md:col-span-7 group border border-[#E5E0D5] bg-white p-6 sm:p-8 cursor-pointer hover:border-[#141413] transition-all duration-300 flex flex-col justify-between"
           >
             <div>
@@ -80,7 +89,8 @@ export function SelectedProductsGallery() {
           </Link>
 
           <Link
-            href={`/products/${selectedProducts[1].id}`}
+            href={`/products/${getCategorySlug(selectedProducts[1].id)}/${selectedProducts[1].id}`}
+            prefetch={true}
             className="md:col-span-5 group border border-[#E5E0D5] bg-white p-6 sm:p-8 cursor-pointer hover:border-[#141413] transition-all duration-300 flex flex-col justify-between"
           >
             <div>
@@ -118,7 +128,8 @@ export function SelectedProductsGallery() {
           {selectedProducts.slice(2, 6).map((prod) => (
             <Link
               key={prod.id}
-              href={`/products/${prod.id}`}
+              href={`/products/${getCategorySlug(prod.id)}/${prod.id}`}
+              prefetch={true}
               className="md:col-span-6 group border border-[#E5E0D5] bg-white p-6 cursor-pointer hover:border-[#141413] transition-all duration-300 flex flex-col justify-between"
             >
               <div>

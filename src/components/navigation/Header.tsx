@@ -33,10 +33,10 @@ export function Header() {
   };
 
   const navItems = [
-    { label: 'HOME', href: '#', hasDropdown: false },
-    { label: 'PRODUCTS', href: '#categories', hasDropdown: true },
-    { label: 'SOLUTIONS', href: '#solutions', hasDropdown: true },
-    { label: 'INDUSTRIES', href: '#industries', hasDropdown: true },
+    { label: 'HOME', href: '/', hasDropdown: false },
+    { label: 'PRODUCTS', href: '/products', hasDropdown: true },
+    { label: 'SOLUTIONS', href: '/#solutions', hasDropdown: true },
+    { label: 'INDUSTRIES', href: '/#industries', hasDropdown: true },
   ];
 
   return (
@@ -62,7 +62,7 @@ export function Header() {
                     VERONA
                   </span>
                 </div>
-                <span className="text-[8px] sm:text-[8.5px] font-tech text-[#C59B27] tracking-[0.2em] font-medium uppercase mt-1 whitespace-nowrap">
+                <span className="hidden sm:block text-[8px] sm:text-[8.5px] font-tech text-[#C59B27] tracking-[0.2em] font-medium uppercase mt-1 whitespace-nowrap">
                   PRODUCTS • SOLUTIONS • PROCUREMENT
                 </span>
               </div>
@@ -92,27 +92,8 @@ export function Header() {
               })}
             </nav>
 
-            {/* Right: Search, WhatsApp & REQUEST A QUOTE Button */}
+            {/* Right: REQUEST A QUOTE Button */}
             <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-              {/* Search Icon */}
-              <button 
-                type="button"
-                className="text-gray-300 hover:text-white transition-colors p-1.5 rounded-full hover:bg-white/5"
-                title="Search Products"
-              >
-                <Search className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
-              </button>
-
-              {/* WhatsApp Icon */}
-              <a
-                href="https://wa.me/?text=Hello%20Verona%20Team%2C%20I%20have%20a%20procurement%20inquiry."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-[#25D366] transition-colors p-1.5 rounded-full hover:bg-white/5"
-                title="Contact via WhatsApp"
-              >
-                <MessageSquare className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#25D366]" />
-              </a>
 
               {/* REQUEST A QUOTE (Solid Gold Amber Button) */}
               <button

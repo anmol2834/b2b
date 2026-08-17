@@ -40,6 +40,8 @@ export const metadata: Metadata = {
     'Wholesale B2B distributor and bulk supply partner of premier branded products for hospitality, commercial, architectural, and industrial projects.',
 };
 
+import { StickyWhatsApp } from '@/components/navigation/StickyWhatsApp';
+
 export default function RootLayout({
   children,
 }: {
@@ -55,7 +57,10 @@ export default function RootLayout({
         <DeviceGuard>
           <MotionProvider>
             <ThemeProvider>
-              <ScrollProvider>{children}</ScrollProvider>
+              <ScrollProvider>
+                {children}
+                <StickyWhatsApp />
+              </ScrollProvider>
             </ThemeProvider>
           </MotionProvider>
         </DeviceGuard>

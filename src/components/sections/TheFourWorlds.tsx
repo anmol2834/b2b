@@ -68,7 +68,7 @@ export function TheFourWorlds() {
           {worlds.map((world) => (
             <Link
               key={world.id}
-              href={`/products/${world.productId}`}
+              href={`/products/${world.id}`}
               className="group border border-[#E5E0D5] bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-[#141413] transition-all duration-300 cursor-pointer"
             >
               <div>

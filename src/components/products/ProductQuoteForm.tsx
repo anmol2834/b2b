@@ -127,10 +127,10 @@ export function ProductQuoteForm({
 
       <button
         type="submit"
-        className="w-full py-3 bg-[#141413] text-[#FAF9F5] text-xs font-tech font-bold uppercase tracking-widest hover:bg-[#A8824C] transition-all flex items-center justify-center gap-2"
+        className="w-full py-3 bg-[#141413] text-[#FAF9F5] text-xs font-tech font-bold uppercase tracking-widest hover:bg-[#A8824C] transition-colors flex items-center justify-center gap-2"
       >
         <Send className="w-3.5 h-3.5" />
-        <span>Request Tier Pricing for {productCode}</span>
+        <span>Request Tiered Pricing for {productCode}</span>
       </button>
     </form>
   );

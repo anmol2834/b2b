@@ -11,7 +11,6 @@ import { ProjectProcurementBanner } from '@/components/sections/ProjectProcureme
 import { ProcurementProcessTimeline } from '@/components/sections/ProcurementProcessTimeline';
 import { WhyPartnerWithUs } from '@/components/sections/WhyPartnerWithUs';
 import { SelectedProductsGallery } from '@/components/sections/SelectedProductsGallery';
-import { SourcingNetwork } from '@/components/sections/SourcingNetwork';
 import { AlternatingScrollMatrix } from '@/components/sections/AlternatingScrollMatrix';
 import { BOQEngine } from '@/components/sections/BOQEngine';
 import { FinalMinimalCTA } from '@/components/sections/FinalMinimalCTA';
@@ -19,10 +18,44 @@ import { ArchitecturalFooter } from '@/components/sections/ArchitecturalFooter';
 import { QuoteModal } from '@/components/navigation/QuoteModal';
 import { VertexSplash } from '@/components/navigation/VertexSplash';
 
+// Persistent flag to suppress splash screen during client-side router navigation back to home
+let globalHasSeenSplashOnHome = false;
+
 export default function LuxuryArchitecturalB2BPage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [quoteDivision, setQuoteDivision] = useState<string | undefined>();
-  const [isSplashComplete, setIsSplashComplete] = useState(false);
+  
+  // Show splash ONLY on full page refresh/reload from the home page
+  const [isSplashComplete, setIsSplashComplete] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return true;
+
+    // If navigation back to home within same session, skip splash screen
+    if (globalHasSeenSplashOnHome) {
+      return true;
+    }
+
+    // Check if this is a hard browser reload (F5 / Refresh button)
+    const navEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+    const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
+
+    // If user clicked 'Back to Home' from another page (not a reload), skip splash
+    const sessionSeen = sessionStorage.getItem('hasSeenSplashOnHome');
+    if (!isReload && sessionSeen) {
+      globalHasSeenSplashOnHome = true;
+      return true;
+    }
+
+    // Play splash for refresh on home page or initial direct visit
+    return false;
+  });
+
+  const handleSplashComplete = () => {
+    globalHasSeenSplashOnHome = true;
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('hasSeenSplashOnHome', 'true');
+    }
+    setIsSplashComplete(true);
+  };
 
   const handleOpenQuote = (divisionId?: string) => {
     setQuoteDivision(divisionId);
@@ -51,7 +84,7 @@ export default function LuxuryArchitecturalB2BPage() {
       {/* Custom Brand Assembly Splash Screen managed via exit presence */}
       <AnimatePresence>
         {!isSplashComplete && (
-          <VertexSplash key="splash-screen" onComplete={() => setIsSplashComplete(true)} />
+          <VertexSplash key="splash-screen" onComplete={handleSplashComplete} />
         )}
       </AnimatePresence>
 
@@ -95,10 +128,7 @@ export default function LuxuryArchitecturalB2BPage() {
         {/* 9. Selected Products (6 Curated Items Linking to Dedicated Product Routes) */}
         <SelectedProductsGallery />
 
-        {/* 10. Sourcing Network ("The right product isn't always from one brand.") */}
-        <SourcingNetwork onRequestQuote={() => handleOpenQuote()} />
-
-        {/* 11. Alternating Scroll & Specification Dossiers */}
+        {/* 10. Alternating Scroll & Specification Dossiers */}
         <AlternatingScrollMatrix
           onRequestQuote={handleOpenQuote}
         />
